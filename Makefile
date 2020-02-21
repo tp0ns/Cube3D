@@ -1,13 +1,14 @@
 CC = gcc
 
 NAME = Cub3D
-
-FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
+# -lmlx -framework OpenGL -framework AppKit
+FLAGS = -Wall -Wextra -Werror 
 # FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framework AppKit
 
 INCLUDE = -I cub.h
 
-SRCS =	
+SRCS =	main.c leave.c \
+		parsing/get_param.c 
 
 OBJS = $(SRCS:.c=.o)
 
