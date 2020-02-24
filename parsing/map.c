@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:56:53 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/24 13:47:44 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/24 15:35:46 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	push_map(int *mod, int fd, t_param *p)
 	{
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave("Scene file can't be read");
-		if (line[0] == '1' && *mod != 1)
+		if ((line[0] == '1' || line[0] == '0') && *mod != 1)
 		{
 			line = clean_map_line(line);
 			p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);

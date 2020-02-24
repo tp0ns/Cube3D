@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/24 14:47:28 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/24 16:39:51 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ void			push_text(char *line, t_param *p, int flag);
 void			push_res(char *line, t_param *p);
 void			push_c_col(char *line, t_param *p);
 void			push_f_col(char *line, t_param *p);
+void			color_check(int r, int g, int b);
 
 #endif
