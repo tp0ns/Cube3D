@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/24 14:41:54 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/24 14:47:28 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ typedef	struct	s_scene
 {
 	char		*linear_map;
 	char		**map;
+	int			x;
+	int			y;
 	char		*north;
 	char		*south;
 	char		*east;
 	char		*west;
 	char		*sprite;
-	int			x;
-	int			y;
 	int			c_col;
 	int			f_col;
 }				t_scene;

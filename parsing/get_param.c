@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/24 13:23:03 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/24 15:29:15 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,6 @@ void	sort_param(char *line, t_param *p)
 		leave("Unrecognized element in scene file");
 }
 
-char	*skip_spaces(char *str)
-{
-	while (*str == ' ')
-		str++;
-	return (str);
-}
-
 void	get_param(int fd, t_param *p)
 {
 	char	*line;
@@ -58,12 +51,11 @@ void	get_param(int fd, t_param *p)
 
 	rtn = 1;
 	mod = 0;
-	init_p(p);
+	init_param(p);
 	while (rtn > 0)
 	{
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave("Scene file can't be read");
-		line = skip_spaces(line);
 		if (line[0] == '1')
 			break ;
 		sort_param(line, p);
@@ -74,6 +66,5 @@ void	get_param(int fd, t_param *p)
 		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
 		push_map(&mod, fd, p);
 	}
-	set_cf_col(p->s);
-	p_check(p);
+	// p_check(p);
 }
