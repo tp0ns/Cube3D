@@ -6,13 +6,13 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/21 16:51:15 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/24 13:23:03 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	init_param(t_param	*p)
+void	init_param(t_param *p)
 {
 	if (!(p->s = malloc(sizeof(t_scene))))
 		leave("Something went wrong with resolution initialization");
@@ -21,7 +21,7 @@ void	init_param(t_param	*p)
 
 void	sort_param(char *line, t_param *p)
 {
-	if (line[0] == '\0' || line[0] == '1')
+	if (line[0] == '\0')
 		return ;
 	else if (line[0] == 'R')
 		push_res((line + 1), p);
@@ -43,6 +43,13 @@ void	sort_param(char *line, t_param *p)
 		leave("Unrecognized element in scene file");
 }
 
+char	*skip_spaces(char *str)
+{
+	while (*str == ' ')
+		str++;
+	return (str);
+}
+
 void	get_param(int fd, t_param *p)
 {
 	char	*line;
@@ -56,7 +63,7 @@ void	get_param(int fd, t_param *p)
 	{
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave("Scene file can't be read");
-		while (line)
+		line = skip_spaces(line);
 		if (line[0] == '1')
 			break ;
 		sort_param(line, p);
@@ -64,8 +71,7 @@ void	get_param(int fd, t_param *p)
 	if (line[0] == '1')
 	{
 		line = clean_map_line(line);
-		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map,
-		line);
+		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
 		push_map(&mod, fd, p);
 	}
 	set_cf_col(p->s);

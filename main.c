@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/21 15:26:02 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/24 13:18:59 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ int	main(int ac, char **av)
 		get_param(fd, &p);
 	}
 	// if (ac == 3) Pour Screenshot
-	while (p.s->param[i])
-		printf("%s\n", p.s->param[i++]);
 	close(fd);
 	return (0);
 }

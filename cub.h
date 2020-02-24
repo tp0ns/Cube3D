@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/21 15:25:59 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/24 14:41:54 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,17 @@
 
 typedef	struct	s_scene
 {
-	char		**param;
+	char		*linear_map;
+	char		**map;
+	char		*north;
+	char		*south;
+	char		*east;
+	char		*west;
+	char		*sprite;
+	int			x;
+	int			y;
+	int			c_col;
+	int			f_col;
 }				t_scene;
 
 typedef	struct	s_param
@@ -39,6 +49,17 @@ void			leave(char *str);
 
 void			get_param(int fd, t_param *p);
 void			init_param(t_param	*p);
-char			*set_line(char *str);
+void			sort_param(char *line, t_param *p);
+char			*skip_spaces(char *str);
+void			push_map(int *mod, int fd, t_param *p);
+char			*clean_map_line(char *line);
+int				line_length(char *line);
+int				is_map_char(char c);
+char			*cut_spaces(char *str);
+void			path_spaces(t_param *p, int flag);
+void			push_text(char *line, t_param *p, int flag);
+void			push_res(char *line, t_param *p);
+void			push_c_col(char *line, t_param *p);
+void			push_f_col(char *line, t_param *p);
 
 #endif

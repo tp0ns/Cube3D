@@ -8,7 +8,7 @@ FLAGS = -Wall -Wextra -Werror
 INCLUDE = -I cub.h
 
 SRCS =	main.c leave.c \
-		parsing/get_param.c 
+		parsing/get_param.c parsing/map.c parsing/texture_res.c parsing/colors.c
 
 OBJS = $(SRCS:.c=.o)
 
