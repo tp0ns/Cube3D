@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 13:00:08 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 13:27:50 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	match_maps(t_param *p)
 			if (p->s->brut_map[x][y] == 'N' || p->s->brut_map[x][y] == 'S'
 			 || p->s->brut_map[x][y] == 'W' || p->s->brut_map[x][y] == 'E')
 			{
-				p->s->pos_x = x;
-				p->s->pos_y = y;
+				p->s->pos_x = (double)x;
+				p->s->pos_y = (double)y;
 				player++;
 			}
 			y++;
@@ -84,6 +84,18 @@ void	match_maps(t_param *p)
 		leave("Too much or too few players in scene file");
 }
 
+void	check_map(t_param *p, int x, int y)
+{
+	if (p->s->map[x][y] == '1' || p->s->map[x][y] == '3'
+	 || p->s->map[x][y] == '4')
+	 return ;
+	if (p->s->map[x][y] == '0')
+		p->s->map[x][y] = '3';
+	if (p->s->map[x][y] == '2')
+		p->s->map[x][y] = '4';
+	if ()
+}
+
 void	check_param(t_param *p)
 {
 	if (!p->s->c_col || !p->s->f_col || !p->s->x || !p->s->y || !p->s->north
@@ -91,4 +103,5 @@ void	check_param(t_param *p)
 		leave("Not enough informations in scene file");
 	init_map(p);
 	match_maps(p);
+	check_map(p);
 }

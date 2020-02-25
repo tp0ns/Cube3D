@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 12:59:42 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 13:06:01 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int ac, char **av)
 	while (p.s->map[i])
 		printf("%s\n", p.s->map[i++]);
 	printf("----------------------\n\n");
+	printf("X : %f\nY : %f\n", p.s->pos_x, p.s->pos_y);
 	close(fd);
 	return (0);
 }
