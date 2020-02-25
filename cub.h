@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 11:55:42 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 12:59:38 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ typedef	struct	s_scene
 	char		*linear_map;
 	char		**brut_map;
 	char		**map;
+	double		pos_x;
+	double		pos_y;
 	int			max_x;
 	int			max_y;
 	int			x;
@@ -68,4 +70,6 @@ void			color_check(int r, int g, int b);
 void			check_param(t_param *p);
 void			init_map(t_param *p);
 void			map_size(t_param *p);
+void			match_maps(t_param *p);
+
 #endif

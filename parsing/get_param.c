@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 11:08:21 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 12:59:40 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ void	get_param(int fd, t_param *p)
 		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
 		push_map(&mod, fd, p);
 	}
-	// check_param(p);
+	check_param(p);
 }

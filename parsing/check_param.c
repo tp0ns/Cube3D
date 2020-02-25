@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 12:01:02 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 13:00:08 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,40 @@ void	init_map(t_param *p)
 	}
 }
 
+void	match_maps(t_param *p)
+{
+	int	x;
+	int	y;
+	int	player;
+
+	x = 0;
+	player = 0;
+	while (x < p->s->max_x)
+	{
+		y = 0;
+		while (p->s->brut_map[x][y])
+		{
+			p->s->map[x][y] = p->s->brut_map[x][y];
+			if (p->s->brut_map[x][y] == 'N' || p->s->brut_map[x][y] == 'S'
+			 || p->s->brut_map[x][y] == 'W' || p->s->brut_map[x][y] == 'E')
+			{
+				p->s->pos_x = x;
+				p->s->pos_y = y;
+				player++;
+			}
+			y++;
+		}
+		x++;
+	}
+	if (player != 1)
+		leave("Too much or too few players in scene file");
+}
+
 void	check_param(t_param *p)
 {
 	if (!p->s->c_col || !p->s->f_col || !p->s->x || !p->s->y || !p->s->north
 		 || !p->s->south || !p->s->west || !p->s->east || !p->s->sprite)
 		leave("Not enough informations in scene file");
 	init_map(p);
+	match_maps(p);
 }
