@@ -9,7 +9,7 @@ INCLUDE = -I cub.h
 
 SRCS =	main.c leave.c \
 		parsing/get_param.c parsing/map.c parsing/texture_res.c parsing/colors.c parsing/check_param.c \
-		
+
 
 OBJS = $(SRCS:.c=.o)
 
@@ -27,6 +27,10 @@ fclean : clean
 		rm -f libft.a
 		$(MAKE) fclean -C ./Libft
 re : fclean all
+
+# a enlever
+run : all
+		./Cub3D map.cub
 
 # %.o: %.c
 	# $(CC) $(FLAGS) -I cube3d.h -c $<  -o $(<:.c=.o)

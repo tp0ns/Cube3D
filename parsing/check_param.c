@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 17:12:26 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 19:07:04 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ void	init_map(t_param *p)
 
 	x = 0;
 	map_size(p);
-	if(!(p->s->map = malloc(sizeof(char *) * (p->s->max_x + 1))))
+	if(!(p->s->map = malloc(sizeof(char *) * (p->s->max_x + 2))))
 		leave("Something went wrong during map initialization");
-	p->s->map[p->s->max_x] = 0;
-	while (x < p->s->max_x)
+	p->s->map[p->s->max_x + 1] = 0;
+	while (x <= p->s->max_x)
 	{
 		y = 0;
-		if(!(p->s->map[x] = malloc(sizeof(char) * (p->s->max_y + 1))))
+		if(!(p->s->map[x] = malloc(sizeof(char) * (p->s->max_y + 2))))
 			leave("Something went wrong during map initialization");
 		while (y < p->s->max_y)
 		{
@@ -89,7 +89,7 @@ void	check_map(t_param *p, int x, int y)
 	if (p->s->map[x][y] == '1' || p->s->map[x][y] == 'O'
 	 || p->s->map[x][y] == 'Z')
 	 return ;
-	if (x == 0 || y == 0 || p->s->map[x][y] == '-')
+	if (x == 0 || y == 0 || p->s->map[x][y] == '-' || p->s->map[x][y] == '\0')
 	 	leave("Map isn't closed around player's spawn");
 	if (p->s->map[x][y] == '0')
 		p->s->map[x][y] = 'O';
