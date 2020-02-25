@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:45:24 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/24 14:27:04 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 11:14:35 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,12 @@ void	push_res(char *line, t_param *p)
 	while (line[i] >= '0' && line[i] <= '9' && line[i])
 		i++;
 	p->s->y = ft_atoi(&line[i]);
+	if (p->s->x > 2560)
+		p->s->x = 2560;
+	else if (p->s->x < 1)
+		leave("Resolution is too low");
+	if (p->s->y > 1440)
+		p->s->y = 1440;
+	else if (p->s->y < 1)
+		leave("Resolution is too low");
 }
