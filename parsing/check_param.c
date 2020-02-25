@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 17:04:20 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 17:12:26 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ void	match_maps(t_param *p)
 			if (p->s->brut_map[x][y] == 'N' || p->s->brut_map[x][y] == 'S'
 			 || p->s->brut_map[x][y] == 'W' || p->s->brut_map[x][y] == 'E')
 			{
-				p->s->pos_x = (double)x;
-				p->s->pos_y = (double)y;
+				p->s->pos_x = (double)x + 0.5;
+				p->s->pos_y = (double)y + 0.5;
 				player++;
 			}
 			y++;
