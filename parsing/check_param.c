@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 13:27:50 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 17:04:20 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_map(t_param *p)
 			leave("Something went wrong during map initialization");
 		while (y < p->s->max_y)
 		{
-			p->s->map[x][y] = -1;
+			p->s->map[x][y] = '-';
 			y++;
 		}
 		p->s->map[x][p->s->max_y] = '\0';
@@ -86,14 +86,19 @@ void	match_maps(t_param *p)
 
 void	check_map(t_param *p, int x, int y)
 {
-	if (p->s->map[x][y] == '1' || p->s->map[x][y] == '3'
-	 || p->s->map[x][y] == '4')
+	if (p->s->map[x][y] == '1' || p->s->map[x][y] == 'O'
+	 || p->s->map[x][y] == 'Z')
 	 return ;
+	if (x == 0 || y == 0 || p->s->map[x][y] == '-')
+	 	leave("Map isn't closed around player's spawn");
 	if (p->s->map[x][y] == '0')
-		p->s->map[x][y] = '3';
-	if (p->s->map[x][y] == '2')
-		p->s->map[x][y] = '4';
-	if ()
+		p->s->map[x][y] = 'O';
+	else if (p->s->map[x][y] == '2')
+		p->s->map[x][y] = 'Z';
+	check_map(p, x + 1, y);
+	check_map(p, x, y + 1);
+	check_map(p, x - 1, y);
+	check_map(p, x, y - 1);
 }
 
 void	check_param(t_param *p)
@@ -103,5 +108,5 @@ void	check_param(t_param *p)
 		leave("Not enough informations in scene file");
 	init_map(p);
 	match_maps(p);
-	check_map(p);
+	check_map(p, (int)p->s->pos_x, (int)p->s->pos_y);
 }
