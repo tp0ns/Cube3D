@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 15:45:57 by tpons            ###   ########.fr       */
+/*   Updated: 2020/02/25 17:29:21 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void			init_map(t_param *p);
 void			map_size(t_param *p);
 void			match_maps(t_param *p);
 void			check_map(t_param *p, int x, int y);
+
+
 
 #endif

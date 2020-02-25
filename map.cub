@@ -3,7 +3,6 @@ R    1000 1500
 NO ./path_to_the_north_text    
 SO ./path_to_the_south_text				
 WE ./path_to_the_west_text
-
 EA ./path_to_the_east_text
 S ./path_to_the_sprite_text   
 
@@ -20,4 +19,4 @@ C 0,130,130
 1 0 0 1 0 0 0 0 0 1
 1 0 0 0 0 0 1 0 0 1
 1 0 0 0 0 N 0 0 0 1
-1 1 1 1 1 1 1 1 1 1
+0 1 1 1 1 1 1 1 1 0
