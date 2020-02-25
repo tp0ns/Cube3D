@@ -1,10 +1,10 @@
 R    1000 1500 
 
-NO ./path_to_the_north_text    
-SO ./path_to_the_south_text				
-WE ./path_to_the_west_text
-EA ./path_to_the_east_text
-S ./path_to_the_sprite_text   
+NO ./path_to_the_north_text      
+SO ./path_to_the_south_text    
+WE ./path_to_the_west_text   
+EA ./path_to_the_east_text   
+S ./path_to_the_sprite_text     
 
 F 0,250,150 
 C 0,130,130
