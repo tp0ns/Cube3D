@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 15:22:57 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 16:03:39 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,10 @@ typedef	struct	s_dda
 {
 	void		*mlx_ptr;
 	void		*win_ptr;
+	void		*image_ptr;
+	char		*image_data;
+	int			bpp;
+	int			size_line;
 	double		dirx;
 	double		diry;
 	double		planx;
@@ -67,6 +71,9 @@ typedef	struct	s_dda
 	int			stepy;
 	int			hit;
 	int			side;
+	int			lineheight;
+	int			drawstart;
+	int			drawend;
 }				t_dda;
 
 typedef	struct	s_param
