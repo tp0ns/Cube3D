@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 11:49:06 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 14:10:11 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ void	check_param(t_param *p)
 		leave("Not enough informations in scene file");
 	init_map(p);
 	match_maps(p);
+	set_player(p, (int)p->s->pos_x, (int)p->s->pos_y);
 	check_map(p, (int)p->s->pos_x, (int)p->s->pos_y);
 }

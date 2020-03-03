@@ -6,14 +6,14 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 12:13:10 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 15:22:57 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # ifndef FOV
-#  define FOV 66
+#  define FOV 0.66
 # endif
 # include <fcntl.h>
 # include <math.h>
@@ -46,8 +46,27 @@ typedef	struct	s_scene
 
 typedef	struct	s_dda
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	double		dirx;
+	double		diry;
+	double		planx;
+	double		plany;
+	double		camx;
+	int			screenx;
+	double		raydirx;
+	double		raydiry;
+	int			mapx;
+	int			mapy;
+	double		sidedistx;
+	double		sidedisty;
+	double		deltadistx;
+	double		deltadisty;
+	double		walldist;
+	int			stepx;
+	int			stepy;
+	int			hit;
+	int			side;
 }				t_dda;
 
 typedef	struct	s_param
@@ -85,6 +104,8 @@ void			game(t_param *p);
 int				key_management(int key, void *param);
 
 void			dda(t_param *p);
-void			init_dda(t_param *p);
+void			set_dda(t_param *p);
+void			set_player(t_param *p, int x, int y);
+void			set_sidedist(t_param *p);
 
 #endif
