@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 10:20:09 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 11:49:06 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	init_map(t_param *p)
 	map_size(p);
 	if(!(p->s->map = malloc(sizeof(char *) * (p->s->max_x + 2))))
 		leave("Something went wrong during map initialization");
-	p->s->map[p->s->max_x + 1] = 0;
+	p->s->map[p->s->max_x + 1] = '\0';
 	while (x <= p->s->max_x)
 	{
 		y = 0;

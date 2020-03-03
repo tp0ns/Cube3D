@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 17:29:21 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 12:13:10 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,16 @@ typedef	struct	s_scene
 	int			f_col;
 }				t_scene;
 
+typedef	struct	s_dda
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+}				t_dda;
+
 typedef	struct	s_param
 {
 	t_scene		*s;
+	t_dda		*d;
 }				t_param;
 
 int				close_win(void);
@@ -73,6 +80,11 @@ void			map_size(t_param *p);
 void			match_maps(t_param *p);
 void			check_map(t_param *p, int x, int y);
 
+void			game(t_param *p);
 
+int				key_management(int key, void *param);
+
+void			dda(t_param *p);
+void			init_dda(t_param *p);
 
 #endif

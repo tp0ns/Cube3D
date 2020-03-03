@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 10:34:56 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 11:59:58 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	main(int ac, char **av)
 	{
 		fd = open(av[1], O_RDONLY);
 		get_param(fd, &p);
+		game(&p);
 	}
 	// if (ac == 3) Pour Screenshot
 	printf("RES :\n x %d y %d\n", p.s->x, p.s->y);

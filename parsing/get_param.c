@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/02/25 18:51:46 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 11:40:55 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ void	init_param(t_param *p)
 	if (!(p->s = malloc(sizeof(t_scene))))
 		leave("Something went wrong with resolution initialization");
 	ft_bzero(p->s, sizeof(t_scene));
+	if (!(p->d = malloc(sizeof(t_dda))))
+		leave("Something went wrong with resolution initialization - 2");
+	ft_bzero(p->d, sizeof(t_dda));
 }
 
 void	sort_param(char *line, t_param *p)
@@ -56,11 +59,11 @@ void	get_param(int fd, t_param *p)
 	{
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave("Scene file can't be read");
-		if (line[0] == '1')
+		if (line[0] == '1' || line[0] == '0'|| line[0] == '2')
 			break ;
 		sort_param(line, p);
 	}
-	if (line[0] == '1')
+	if (line[0] == '1' || line[0] == '0'|| line[0] == '2')
 	{
 		line = clean_map_line(line);
 		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
