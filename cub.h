@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 16:03:39 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 17:52:11 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,8 @@ void			dda(t_param *p);
 void			set_dda(t_param *p);
 void			set_player(t_param *p, int x, int y);
 void			set_sidedist(t_param *p);
+
+void			draw(t_param *p);
+void			set_lineheight(t_param *p);
 
 #endif

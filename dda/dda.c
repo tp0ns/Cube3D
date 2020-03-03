@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 12:11:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 15:38:52 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/03 17:56:17 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void	set_player(t_param *p, int x, int y)
 		p->d->planx = FOV;
 		p->d->diry = 1;
 	}
+	printf("map[player] = |%c|\n", p->s->map[x][y]);
 }
 
 void	set_sidedist(t_param *p)
@@ -62,45 +63,47 @@ void	set_sidedist(t_param *p)
 
 void	set_walldist(t_param *p)
 {
+	p->d->hit = 0;
 	while (p->d->hit == 0)
 	{
     	if (p->d->sidedistx < p->d->sidedisty)
     	{
     	  p->d->sidedistx += p->d->deltadistx;
     	  p->d->mapx += p->d->stepx;
-    	  p->d->side = 1; // a echanger si bug
+    	  p->d->side = 0; // a echanger si bug
     	}
     	else
     	{
     	  p->d->sidedisty += p->d->deltadisty;
     	  p->d->mapy += p->d->stepy;
-    	  p->d->side = 0; // avec ca
+    	  p->d->side = 1; // avec ca
     	}
-    	if (p->s->map[p->d->mapx][p->d->mapy] > 0)
+    	if (p->s->map[p->d->mapx][p->d->mapy] != 'O')
 			p->d->hit = 1;
     }
 	if (p->d->side == 0)
 		p->d->walldist = (p->d->mapx - p->s->pos_x + (1 - p->d->stepx) / 2) / p->d->raydirx;
-    else
+	else
 		p->d->walldist = (p->d->mapy - p->s->pos_y + (1 - p->d->stepy) / 2) / p->d->raydiry;
 }
 
 void	set_dda(t_param *p)
 {
-	p->d->camx = 2 * p->d->screenx / p->s->y - 1;
-	p->d->raydirx = p->d->raydirx + p->d->planx * p->d->camx;
-	p->d->raydiry = p->d->raydiry + p->d->plany * p->d->camx;
+	p->d->camx = 2 * (double)p->d->screenx / (double)p->s->x - 1;
+	p->d->raydirx = p->d->dirx + p->d->planx * p->d->camx;
+	p->d->raydiry = p->d->diry + p->d->plany * p->d->camx;
 	p->d->mapx = (int)p->s->pos_x;
 	p->d->mapy = (int)p->s->pos_y;
-	p->d->deltadistx = abs(1 / p->d->raydirx);
-	p->d->deltadisty = abs(1 / p->d->raydiry);
+	p->d->deltadistx = fabs(1 / p->d->raydirx);
+	p->d->deltadisty = fabs(1 / p->d->raydiry);
 	set_sidedist(p);
 	set_walldist(p);
 }
 
 void	dda(t_param *p)
 {
-	while (p->d->screenx < p->s->y)
+	p->d->screenx = 0;
+	while (p->d->screenx < p->s->x)
 	{
 		set_dda(p);
 		draw(p);
