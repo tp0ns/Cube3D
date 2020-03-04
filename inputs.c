@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/04 14:18:07 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 16:03:33 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 17:44:25 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,42 +14,42 @@
 
 void	forward(t_param *p)
 {
-	if (p->s->map[(int)(p->s->pos_x + p->d->dirx * MS)]
-	[(int)p->s->pos_y] == 'O')
-		p->s->pos_x += p->d->dirx * MS;
-	if (p->s->map[(int)p->s->pos_x]
-	[(int)(p->s->pos_y + p->d->diry * MS)] == 'O')
-		p->s->pos_y += p->d->diry * MS;
+	if (p->s->map[(int)(p->s->pos_x + p->d->dirx * M)][(int)p->s->pos_y] != '1'
+	&& p->s->map[(int)(p->s->pos_x + p->d->dirx * M)][(int)p->s->pos_y] != 'Z')
+		p->s->pos_x += p->d->dirx * M;
+	if (p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y + p->d->diry * M)] != '1'
+	&& p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y + p->d->diry * M)] != 'Z')
+		p->s->pos_y += p->d->diry * M;
 }
 
 void	backward(t_param *p)
 {
-	if (p->s->map[(int)(p->s->pos_x - p->d->dirx * MS)]
-	[(int)p->s->pos_y] == 'O')
-		p->s->pos_x -= p->d->dirx * MS;
-	if (p->s->map[(int)p->s->pos_x]
-	[(int)(p->s->pos_y - p->d->diry * MS)] == 'O')
-		p->s->pos_y -= p->d->diry * MS;
+	if (p->s->map[(int)(p->s->pos_x - p->d->dirx * M)][(int)p->s->pos_y] != '1'
+	&& p->s->map[(int)(p->s->pos_x - p->d->dirx * M)][(int)p->s->pos_y] != '2')
+		p->s->pos_x -= p->d->dirx * M;
+	if (p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y - p->d->diry * M)] != '1'
+	&& p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y - p->d->diry * M)] != 'Z')
+		p->s->pos_y -= p->d->diry * M;
 }
 
 void	left(t_param *p)
 {
-	if (p->s->map[(int)(p->s->pos_x - p->d->planx * MS)]
-	[(int)p->s->pos_y] == 'O')
-		p->s->pos_x -= p->d->planx * MS;
-	if (p->s->map[(int)p->s->pos_x]
-	[(int)(p->s->pos_y - p->d->plany * MS)] == 'O')
-		p->s->pos_y -= p->d->plany * MS;
+	if (p->s->map[(int)(p->s->pos_x - p->d->planx * M)][(int)p->s->pos_y] != '1'
+	&& p->s->map[(int)(p->s->pos_x - p->d->planx * M)][(int)p->s->pos_y] != 'Z')
+		p->s->pos_x -= p->d->planx * M;
+	if (p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y - p->d->plany * M)] != '1'
+	&& p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y - p->d->plany * M)] != 'Z')
+		p->s->pos_y -= p->d->plany * M;
 }
 
 void	right(t_param *p)
 {
-	if (p->s->map[(int)(p->s->pos_x + p->d->planx * MS)]
-	[(int)p->s->pos_y] == 'O')
-		p->s->pos_x += p->d->planx * MS;
-	if (p->s->map[(int)p->s->pos_x]
-	[(int)(p->s->pos_y + p->d->plany * MS)] == 'O')
-		p->s->pos_y += p->d->plany * MS;
+	if (p->s->map[(int)(p->s->pos_x + p->d->planx * M)][(int)p->s->pos_y] != '1'
+	&& p->s->map[(int)(p->s->pos_x + p->d->planx * M)][(int)p->s->pos_y] != 'Z')
+		p->s->pos_x += p->d->planx * M;
+	if (p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y + p->d->plany * M)] != '1'
+	&& p->s->map[(int)p->s->pos_x][(int)(p->s->pos_y + p->d->plany * M)] != 'Z')
+		p->s->pos_y += p->d->plany * M;
 }
 
 void	rotate(t_param *p, int key)

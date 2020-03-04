@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 15:45:37 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 18:13:21 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 # ifndef FOV
 #  define FOV 0.66
 # endif
-# ifndef MS
-#  define MS 0.5
+# ifndef M
+#  define M 0.1
 # endif
 # ifndef RS
-#  define RS 0.66
+#  define RS 0.1
 # endif
 # include <fcntl.h>
 # include <math.h>
@@ -123,8 +123,10 @@ void			set_sidedist(t_param *p);
 
 void			draw(t_param *p);
 void			set_lineheight(t_param *p);
+int				draw_ceiling(t_param *p, int y);
+void			draw_floor(t_param *p, int y);
 
-// void			rotate(t_param *p, int key);
+void			rotate(t_param *p, int key);
 void			right(t_param *p);
 void			left(t_param *p);
 void			backward(t_param *p);

@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:30:43 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 13:41:57 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 18:13:55 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,69 @@
 void	set_lineheight(t_param *p)
 {
 	p->d->lineheight = (int)(p->s->y / p->d->walldist);
-    p->d->drawstart = -p->d->lineheight / 2 + p->s->y / 2;
-    if(p->d->drawstart < 0)
+	p->d->drawstart = -p->d->lineheight / 2 + p->s->y / 2;
+	if (p->d->drawstart < 0)
 		p->d->drawstart = 0;
-    p->d->drawend = p->d->lineheight / 2 + p->s->y / 2;
-    if(p->d->drawend >= p->s->y)
+	p->d->drawend = p->d->lineheight / 2 + p->s->y / 2;
+	if (p->d->drawend >= p->s->y)
 		p->d->drawend = p->s->y - 1;
+}
+
+int		draw_ceiling(t_param *p, int y)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = p->s->c_col % 256;
+	g = (p->s->c_col / 256) % 256;
+	b = ((p->s->c_col / 256) / 256) % 256;
+	while (y < p->d->drawstart)
+	{
+		p->d->image_data
+			[p->d->screenx * p->d->bpp / 8 + p->d->size_line * y] = r;
+		p->d->image_data
+			[(p->d->screenx * p->d->bpp / 8 + p->d->size_line * y) + 1] = g;
+		p->d->image_data
+			[(p->d->screenx * p->d->bpp / 8 + p->d->size_line * y) + 2] = b;
+		y++;
+	}
+	return (y);
+}
+
+void	draw_floor(t_param *p, int y)
+{
+	int	r;
+	int	g;
+	int	b;
+
+	r = p->s->f_col % 256;
+	g = (p->s->f_col / 256) % 256;
+	b = ((p->s->f_col / 256) / 256) % 256;
+	while (y < p->s->y)
+	{
+		p->d->image_data
+			[p->d->screenx * p->d->bpp / 8 + p->d->size_line * y] = r;
+		p->d->image_data
+			[(p->d->screenx * p->d->bpp / 8 + p->d->size_line * y) + 1] = g;
+		p->d->image_data
+			[(p->d->screenx * p->d->bpp / 8 + p->d->size_line * y) + 2] = b;
+		y++;
+	}
 }
 
 void	draw(t_param *p)
 {
-	int endian;
 	int	y;
 
 	y = 0;
 	set_lineheight(p);
-	while (y < p->d->drawstart)
-		y++;
+	y += draw_ceiling(p, y);
 	while (y < p->d->drawend)
 	{
-		p->d->image_data[p->d->screenx * p->d->bpp / 8 + p->d->size_line * y] = 0xFFFFFF;
+		p->d->image_data
+			[p->d->screenx * p->d->bpp / 8 + p->d->size_line * y] = 0xFFFFFF;
 		y++;
 	}
+	draw_floor(p, y);
 }

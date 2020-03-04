@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 15:23:44 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 18:13:50 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ int	main(int ac, char **av)
 		get_param(fd, &p);
 		game(&p);
 	}
+	// if (ac == 3) Pour Screenshot;
 	close(fd);
 	return (0);
 }
 
 //ADD I FOR PRINT
-	// if (ac == 3) Pour Screenshot
 	// printf("RES :\n x %d y %d\n", p.s->x, p.s->y);
 	// printf("TEXTURE :\n N      %s\n S      %s\n W      %s\n E      %s\n Sprite %s\n", p.s->north, p.s->south, p.s->west, p.s->east, p.s->sprite);
 	// printf("COLORS :\n Ceiling %d\n Floor %d\n", p.s->c_col, p.s->f_col);

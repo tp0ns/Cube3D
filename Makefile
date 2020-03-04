@@ -2,8 +2,8 @@ CC = gcc
 
 NAME = Cub3D
 
-# FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framework AppKit
+FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
+# FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framework AppKit
 
 INCLUDE = -I cub.h
 
