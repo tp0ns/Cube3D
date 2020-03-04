@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 17:52:11 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 14:29:22 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define CUB3D_H
 # ifndef FOV
 #  define FOV 0.66
+# endif
+# ifndef MS
+#  define MS 0.66
+# endif
+# ifndef RS
+#  define RS 0.66
 # endif
 # include <fcntl.h>
 # include <math.h>
@@ -89,7 +95,7 @@ void			get_param(int fd, t_param *p);
 void			init_param(t_param	*p);
 void			sort_param(char *line, t_param *p);
 char			*skip_spaces(char *str);
-void			push_map(int *mod, int fd, t_param *p);
+void			push_map(int fd, t_param *p);
 char			*clean_map_line(char *line);
 int				line_length(char *line);
 int				is_map_char(char c);
@@ -108,7 +114,7 @@ void			check_map(t_param *p, int x, int y);
 
 void			game(t_param *p);
 
-int				key_management(int key, void *param);
+int				key_management(int key, void *p);
 
 void			dda(t_param *p);
 void			set_dda(t_param *p);
@@ -117,5 +123,11 @@ void			set_sidedist(t_param *p);
 
 void			draw(t_param *p);
 void			set_lineheight(t_param *p);
+
+void			rotate(void *p, int key);
+void			right(void *p);
+void			left(void *p);
+void			backward(void *p);
+void			forward(void *p);
 
 #endif

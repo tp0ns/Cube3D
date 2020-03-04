@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 11:40:55 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 14:01:18 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,24 +50,26 @@ void	get_param(int fd, t_param *p)
 {
 	char	*line;
 	int		rtn;
-	int		mod;
+	int		i;
 
 	rtn = 1;
-	mod = 0;
 	init_param(p);
 	while (rtn > 0)
 	{
+		i = 0;
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave("Scene file can't be read");
-		if (line[0] == '1' || line[0] == '0'|| line[0] == '2')
+		while (line[i] == ' ') //coucou
+			i++;
+		if (line[i] == '1' || line[i] == '0' || line[i] == '2')
 			break ;
-		sort_param(line, p);
+		sort_param(&line[i], p);
 	}
-	if (line[0] == '1' || line[0] == '0'|| line[0] == '2')
+	if (line[i] == '1' || line[i] == '0' || line[i] == '2')
 	{
 		line = clean_map_line(line);
 		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
-		push_map(&mod, fd, p);
+		push_map(fd, p);
 	}
 	check_param(p);
 }

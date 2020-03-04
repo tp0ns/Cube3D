@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:56:53 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 11:59:59 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 14:01:11 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,25 +61,31 @@ char	*clean_map_line(char *line)
 	return (clean_line);
 }
 
-void	push_map(int *mod, int fd, t_param *p)
+void	push_map(int fd, t_param *p)
 {
 	char	*line;
 	int		rtn;
+	int		mod;
+	int		i;
 
 	rtn = 1;
+	mod = 0;
 	while (rtn > 0)
 	{
+		i = 0;
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave("Scene file can't be read");
-		if ((line[0] == '1' || line[0] == '0'|| line[0] == '2') && *mod != 1)
+		while (line[i] == ' ') //coucou
+			i++;
+		if ((line[i] == '1' || line[i] == '0' || line[i] == '2') && mod != 1)
 		{
 			line = clean_map_line(line);
 			p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
 		}
-		else if (*mod == 1 && line[0] != '\0')
+		else if (mod == 1 && line[i] != '\0')
 			leave("Your scene file is uncorrect");
 		else
-			*mod = 1;
+			mod = 1;
 	}
 	p->s->brut_map = ft_split(p->s->linear_map, '-');
 }
