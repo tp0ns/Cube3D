@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 12:11:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 15:22:42 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 18:46:01 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,25 @@ void	set_player(t_param *p, int x, int y)
 void	set_sidedist(t_param *p)
 {
 	if (p->d->raydirx < 0)
-    {
-      p->d->stepx = -1;
-      p->d->sidedistx = (p->s->pos_x - p->d->mapx) * p->d->deltadistx;
-    }
-    else
-    {
-      p->d->stepx = 1;
-      p->d->sidedistx = (p->d->mapx + 1.0 - p->s->pos_x) * p->d->deltadistx;
-    }
+	{
+		p->d->stepx = -1;
+		p->d->sidedistx = (p->s->pos_x - p->d->mapx) * p->d->deltadistx;
+	}
+	else
+	{
+		p->d->stepx = 1;
+		p->d->sidedistx = (p->d->mapx + 1.0 - p->s->pos_x) * p->d->deltadistx;
+	}
 	if (p->d->raydiry < 0)
-    {
-      p->d->stepy = -1;
-      p->d->sidedisty = (p->s->pos_y - p->d->mapy) * p->d->deltadisty;
-    }
-    else
-    {
-      p->d->stepy = 1;
-      p->d->sidedisty = (p->d->mapy + 1.0 - p->s->pos_y) * p->d->deltadisty;
-    }
+	{
+		p->d->stepy = -1;
+		p->d->sidedisty = (p->s->pos_y - p->d->mapy) * p->d->deltadisty;
+	}
+	else
+	{
+		p->d->stepy = 1;
+		p->d->sidedisty = (p->d->mapy + 1.0 - p->s->pos_y) * p->d->deltadisty;
+	}
 }
 
 void	set_walldist(t_param *p)
@@ -65,25 +65,27 @@ void	set_walldist(t_param *p)
 	p->d->hit = 0;
 	while (p->d->hit == 0)
 	{
-    	if (p->d->sidedistx < p->d->sidedisty)
-    	{
-    	  p->d->sidedistx += p->d->deltadistx;
-    	  p->d->mapx += p->d->stepx;
-    	  p->d->side = 0; // a echanger si bug
-    	}
-    	else
-    	{
-    	  p->d->sidedisty += p->d->deltadisty;
-    	  p->d->mapy += p->d->stepy;
-    	  p->d->side = 1; // avec ca
-    	}
-    	if (p->s->map[p->d->mapx][p->d->mapy] != 'O')
+		if (p->d->sidedistx < p->d->sidedisty)
+		{
+			p->d->sidedistx += p->d->deltadistx;
+			p->d->mapx += p->d->stepx;
+			p->d->side = 0;
+		}
+		else
+		{
+			p->d->sidedisty += p->d->deltadisty;
+			p->d->mapy += p->d->stepy;
+			p->d->side = 1;
+		}
+		if (p->s->map[p->d->mapx][p->d->mapy] == '1')
 			p->d->hit = 1;
-    }
+	}
 	if (p->d->side == 0)
-		p->d->walldist = (p->d->mapx - p->s->pos_x + (1 - p->d->stepx) / 2) / p->d->raydirx;
+		p->d->walldist = (p->d->mapx - p->s->pos_x +
+			(1 - p->d->stepx) / 2) / p->d->raydirx;
 	else
-		p->d->walldist = (p->d->mapy - p->s->pos_y + (1 - p->d->stepy) / 2) / p->d->raydiry;
+		p->d->walldist = (p->d->mapy - p->s->pos_y +
+			(1 - p->d->stepy) / 2) / p->d->raydiry;
 }
 
 void	set_dda(t_param *p)

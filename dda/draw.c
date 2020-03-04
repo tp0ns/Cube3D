@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:30:43 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 18:13:55 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 19:15:43 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ void	draw(t_param *p)
 	while (y < p->d->drawend)
 	{
 		p->d->image_data
-			[p->d->screenx * p->d->bpp / 8 + p->d->size_line * y] = 0xFFFFFF;
+			[p->d->screenx * p->d->bpp / 8 + p->d->size_line * y] = 0xAAAAAA;
 		y++;
 	}
 	draw_floor(p, y);

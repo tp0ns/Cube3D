@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:27:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 18:13:45 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 19:08:29 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	push_f_col(char *line, t_param *p)
 	while (line[i] != ',')
 		i++;
 	f_g = ft_atoi(line + i + 1);
+	i++;
 	while (line[i] != ',')
 		i++;
 	f_b = ft_atoi(line + i + 1);
@@ -51,6 +52,7 @@ void	push_c_col(char *line, t_param *p)
 	while (line[i] != ',')
 		i++;
 	c_g = ft_atoi(line + i + 1);
+	i++;
 	while (line[i] != ',')
 		i++;
 	c_b = ft_atoi(line + i + 1);
