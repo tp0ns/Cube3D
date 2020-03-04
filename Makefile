@@ -7,7 +7,7 @@ FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framew
 
 INCLUDE = -I cub.h
 
-SRCS =	main.c leave.c game.c \
+SRCS =	main.c leave.c game.c inputs.c\
 		parsing/get_param.c parsing/map.c parsing/texture_res.c parsing/colors.c parsing/check_param.c \
 		dda/dda.c dda/draw.c 
 

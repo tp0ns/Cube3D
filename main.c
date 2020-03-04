@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 13:40:56 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 15:23:44 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ int	main(int ac, char **av)
 {
 	int			fd;
 	t_param		p;
-	int			i = 0; //for printf
 
 	fd = 0;
 	if (ac == 2)
@@ -29,7 +28,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-
+//ADD I FOR PRINT
 	// if (ac == 3) Pour Screenshot
 	// printf("RES :\n x %d y %d\n", p.s->x, p.s->y);
 	// printf("TEXTURE :\n N      %s\n S      %s\n W      %s\n E      %s\n Sprite %s\n", p.s->north, p.s->south, p.s->west, p.s->east, p.s->sprite);

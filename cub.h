@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 14:29:22 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 15:45:37 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #  define FOV 0.66
 # endif
 # ifndef MS
-#  define MS 0.66
+#  define MS 0.5
 # endif
 # ifndef RS
 #  define RS 0.66
@@ -114,7 +114,7 @@ void			check_map(t_param *p, int x, int y);
 
 void			game(t_param *p);
 
-int				key_management(int key, void *p);
+int				key_management(int key, t_param *p);
 
 void			dda(t_param *p);
 void			set_dda(t_param *p);
@@ -124,10 +124,10 @@ void			set_sidedist(t_param *p);
 void			draw(t_param *p);
 void			set_lineheight(t_param *p);
 
-void			rotate(void *p, int key);
-void			right(void *p);
-void			left(void *p);
-void			backward(void *p);
-void			forward(void *p);
+// void			rotate(t_param *p, int key);
+void			right(t_param *p);
+void			left(t_param *p);
+void			backward(t_param *p);
+void			forward(t_param *p);
 
 #endif

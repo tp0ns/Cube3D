@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 12:11:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/03 18:12:37 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/04 15:22:42 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void	set_player(t_param *p, int x, int y)
 		p->d->planx = FOV;
 		p->d->diry = 1;
 	}
-	printf("map[player] = |%c|\n", p->s->map[x][y]);
 }
 
 void	set_sidedist(t_param *p)
