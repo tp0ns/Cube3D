@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 12:11:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 16:46:47 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 17:32:26 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,10 @@ void	set_walldist(t_param *p)
 		if (p->s->map[p->d->mapx][p->d->mapy] == '1')
 			which_wall(p);
 	}
-	if (p->d->side == 0 || p->d->side == 1)
+	if (p->d->side == 1 || p->d->side == 2)
 		p->d->walldist = (p->d->mapx - p->s->pos_x +
 			(1 - p->d->stepx) / 2) / p->d->raydirx;
-	else
+	else if (p->d->side == 3 || p->d->side == 4)
 		p->d->walldist = (p->d->mapy - p->s->pos_y +
 			(1 - p->d->stepy) / 2) / p->d->raydiry;
 }
