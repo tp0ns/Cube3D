@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:45:24 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 15:30:41 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 16:46:40 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,27 @@ char	*cut_spaces(char *str)
 
 void	path_spaces(t_param *p, int flag)
 {
-	if (flag == 0)
-		p->s->north = cut_spaces(p->s->north);
-	else if (flag == 1)
-		p->s->south = cut_spaces(p->s->south);
+	if (flag == 1)
+		init_text(p, flag, cut_spaces(p->s->north));
 	else if (flag == 2)
-		p->s->west = cut_spaces(p->s->west);
+		init_text(p, flag, cut_spaces(p->s->south));
 	else if (flag == 3)
-		p->s->east = cut_spaces(p->s->east);
+		init_text(p, flag, cut_spaces(p->s->west));
 	else if (flag == 4)
-		p->s->sprite = cut_spaces(p->s->sprite);
+		init_text(p, flag, cut_spaces(p->s->east));
+	else if (flag == 5)
+		init_text(p, flag, cut_spaces(p->s->sprite));
+}
+
+void	init_text(t_param *p, int flag, char *path)
+{
+	int	endian;
+
+	if (!(p->i[flag]->image_ptr = mlx_xpm_file_to_image(
+			p->d->mlx_ptr, path, p->i[flag]->width, p->i[flag]->height)))
+		leave("Texture path isn't valid");
+	p->i[flag]->image_data = mlx_get_data_addr(p->i[flag]->image_ptr,
+			&p->i[flag]->bpp, &p->i[flag]->size_line, &endian);
 }
 
 void	push_text(char *line, t_param *p, int flag)
@@ -46,15 +57,15 @@ void	push_text(char *line, t_param *p, int flag)
 	i = 0;
 	while (ft_isspace(line[i]) && line[i])
 		i++;
-	if (flag == 0)
+	if (flag == 1)
 		p->s->north = ft_strdup(&line[i]);
-	else if (flag == 1)
-		p->s->south = ft_strdup(&line[i]);
 	else if (flag == 2)
-		p->s->west = ft_strdup(&line[i]);
+		p->s->south = ft_strdup(&line[i]);
 	else if (flag == 3)
-		p->s->east = ft_strdup(&line[i]);
+		p->s->west = ft_strdup(&line[i]);
 	else if (flag == 4)
+		p->s->east = ft_strdup(&line[i]);
+	else if (flag == 5)
 		p->s->sprite = ft_strdup(&line[i]);
 	path_spaces(p, flag);
 }

@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:30:43 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 15:22:50 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 16:50:28 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ int		draw_ceiling(t_param *p, int y)
 	b = ((p->s->c_col / 256) / 256) % 256;
 	while (y < p->d->drawstart)
 	{
-		p->i->image_data
-			[p->d->screenx * p->i->bpp / 8 + p->i->size_line * y] = r;
-		p->i->image_data
-			[(p->d->screenx * p->i->bpp / 8 + p->i->size_line * y) + 1] = g;
-		p->i->image_data
-			[(p->d->screenx * p->i->bpp / 8 + p->i->size_line * y) + 2] = b;
+		p->i[0]->image_data
+			[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = r;
+		p->i[0]->image_data
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] = g;
+		p->i[0]->image_data
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] = b;
 		y++;
 	}
 	return (y);
@@ -56,12 +56,12 @@ void	draw_floor(t_param *p, int y)
 	b = ((p->s->f_col / 256) / 256) % 256;
 	while (y < p->s->y)
 	{
-		p->i->image_data
-			[p->d->screenx * p->i->bpp / 8 + p->i->size_line * y] = r;
-		p->i->image_data
-			[(p->d->screenx * p->i->bpp / 8 + p->i->size_line * y) + 1] = g;
-		p->i->image_data
-			[(p->d->screenx * p->i->bpp / 8 + p->i->size_line * y) + 2] = b;
+		p->i[0]->image_data
+			[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = r;
+		p->i[0]->image_data
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] = g;
+		p->i[0]->image_data
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] = b;
 		y++;
 	}
 }
@@ -73,12 +73,12 @@ void	draw(t_param *p)
 	y = 0;
 	set_lineheight(p);
 	y += draw_ceiling(p, y);
-	// while (y < p->d->drawend)
-	// {
-	// 	p->i->image_data
-	// 		[p->d->screenx * p->i->bpp / 8 + p->i->size_line * y] = 0xAAAAAA;
-	// 	y++;
-	// }
-	y += draw_textures(p, y);
+	while (y < p->d->drawend)
+	{
+		p->i[0]->image_data
+			[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = 0xAAAAAA;
+		y++;
+	}
+	// y += draw_textures(p, y);
 	draw_floor(p, y);
 }

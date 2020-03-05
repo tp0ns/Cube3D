@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 15:32:01 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 16:45:43 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct	s_image
 {
 	void		*image_ptr;
 	char		*image_data;
+	int			width;
+	int			height;
 	int			bpp;
 	int			size_line;
 }				t_image;
@@ -106,6 +108,7 @@ int				line_length(char *line);
 int				is_map_char(char c);
 char			*cut_spaces(char *str);
 void			path_spaces(t_param *p, int flag);
+void			init_text(t_param *p, int flag, char *path);
 void			push_text(char *line, t_param *p, int flag);
 void			push_res(char *line, t_param *p);
 void			push_c_col(char *line, t_param *p);
