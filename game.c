@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 10:42:16 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 16:49:02 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 17:22:28 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int		play(t_param *p)
 
 void	game(t_param *p)
 {
-	p->d->mlx_ptr = mlx_init();
 	p->d->win_ptr = mlx_new_window(p->d->mlx_ptr,
 		p->s->x, p->s->y, "Cub3D");
 	mlx_hook(p->d->win_ptr, 2, 5, key_management, p);

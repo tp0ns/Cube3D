@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:45:24 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 16:46:40 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 17:14:53 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_text(t_param *p, int flag, char *path)
 	int	endian;
 
 	if (!(p->i[flag]->image_ptr = mlx_xpm_file_to_image(
-			p->d->mlx_ptr, path, p->i[flag]->width, p->i[flag]->height)))
+			p->d->mlx_ptr, path, &p->i[flag]->width, &p->i[flag]->height)))
 		leave("Texture path isn't valid");
 	p->i[flag]->image_data = mlx_get_data_addr(p->i[flag]->image_ptr,
 			&p->i[flag]->bpp, &p->i[flag]->size_line, &endian);

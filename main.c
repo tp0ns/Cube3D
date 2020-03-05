@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 18:13:50 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 17:23:14 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int ac, char **av)
 	if (ac == 2)
 	{
 		fd = open(av[1], O_RDONLY);
+		init_param(&p);
+		p.d->mlx_ptr = mlx_init();
 		get_param(fd, &p);
 		game(&p);
 	}
