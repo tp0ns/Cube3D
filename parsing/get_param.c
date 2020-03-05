@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 14:01:18 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/05 15:32:20 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ void	init_param(t_param *p)
 	if (!(p->d = malloc(sizeof(t_dda))))
 		leave("Something went wrong with resolution initialization - 2");
 	ft_bzero(p->d, sizeof(t_dda));
+	if (!(p->i = malloc(sizeof(t_image))))
+		leave("Something went wrong with resolution initialization - 2");
+	ft_bzero(p->i, sizeof(t_image));
 }
 
 void	sort_param(char *line, t_param *p)
@@ -29,15 +32,15 @@ void	sort_param(char *line, t_param *p)
 	else if (line[0] == 'R')
 		push_res((line + 1), p);
 	else if (line[0] == 'N' && line[1] == 'O')
-		push_text((line + 2), p, 1);
+		push_text((line + 2), p, 0);
 	else if (line[0] == 'S' && line[1] == 'O')
-		push_text((line + 2), p, 2);
+		push_text((line + 2), p, 1);
 	else if (line[0] == 'W' && line[1] == 'E')
-		push_text((line + 2), p, 3);
+		push_text((line + 2), p, 2);
 	else if (line[0] == 'E' && line[1] == 'A')
-		push_text((line + 2), p, 4);
+		push_text((line + 2), p, 3);
 	else if (line[0] == 'S' && line[1] != 'O')
-		push_text((line + 1), p, 5);
+		push_text((line + 1), p, 4);
 	else if (line[0] == 'F')
 		push_f_col((line + 1), p);
 	else if (line[0] == 'C')
