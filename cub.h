@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/10 15:05:02 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 16:33:39 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #  define FOV 0.66
 # endif
 # ifndef M
-#  define M 0.1
+#  define M 0.6
 # endif
 # ifndef RS
 #  define RS 0.1
