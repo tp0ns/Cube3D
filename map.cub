@@ -1,17 +1,17 @@
-R    700 500 
+ R    700 500 
 
-NO ./textures/stone.xpm     
-SO ./textures/mossy.xpm   
-WE ./textures/redbrick.xpm  
+    NO ./textures/stone.xpm     
+ SO ./textures/mossy.xpm   
+   WE ./textures/redbrick.xpm  
 EA ./textures/wood.xpm  
 S  ./textures/pillar.xpm    
 
-C 255,255,255 
-F 255,0,0
+C     255,255,255 
+F  255,0,0
 
-01111111
-10000001
-12000001
+  1 1111111
+ 1010000001
+1200000011
 10000001
 10000001
 111011111111

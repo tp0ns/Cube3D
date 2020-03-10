@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 17:22:31 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 15:58:28 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	get_param(int fd, t_param *p)
 		i = 0;
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave("Scene file can't be read");
-		while (line[i] == ' ') //coucou
+		while (line[i] == ' ')
 			i++;
 		if (line[i] == '1' || line[i] == '0' || line[i] == '2')
 			break ;

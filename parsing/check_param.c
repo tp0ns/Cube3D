@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/04 18:20:30 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 16:10:38 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,8 @@ void	check_map(t_param *p, int x, int y)
 	if (p->s->map[x][y] == '1' || p->s->map[x][y] == 'O'
 	|| p->s->map[x][y] == 'Z')
 		return ;
-	if (x == 0 || y == 0 || p->s->map[x][y] == '-' || p->s->map[x][y] == '\0')
+	if (x == 0 || y == 0 || p->s->map[x][y] == '-'
+	|| p->s->map[x][y] == '\0' || p->s->map[x][y] == ' ')
 		leave("Map isn't closed around player's spawn");
 	if (p->s->map[x][y] == '0')
 		p->s->map[x][y] = 'O';
