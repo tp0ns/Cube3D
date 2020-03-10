@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/10 09:50:51 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 14:47:34 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef	struct	s_dda
 	int			textx;
 	int			texty;
 	double		step;
+	double		textpos;
 }				t_dda;
 
 typedef struct	s_image

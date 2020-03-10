@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:03:03 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/10 13:57:50 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 14:46:47 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,17 @@ void	set_texture(t_param *p)
 
 int		draw_textures(t_param *p, int y)
 {
+	int i;
+
+	i = 0;
 	set_texture(p);
+	p->d->step = y * p->i[0]->size_line - p->s->y * p->i[p->d->side]->size_line + p->d->lineheight * p->i[p->d->side]->size_line;
+	p->d->textpos = (p->d->drawstart - p->s->y / 2 + p->d->lineheight / 2) * p->d->step;
 	while (y < p->d->drawend)
 	{
-		p->d->step = y * p->i[0]->size_line - p->s->y * p->i[p->d->side]->size_line + p->d->lineheight * p->i[p->d->side]->size_line;
-		p->d->texty = ((p->d->step * p->i[p->d->side]->height) / p->d->lineheight) / p->i[p->d->side]->size_line;
+		p->d->texty = (int)p->d->textpos & (p->i[p->d->side]->height - 1);
+		p->d->textpos += p->d->step;
+		// p->d->texty = ((p->d->step * p->i[p->d->side]->height) / p->d->lineheight) / p->i[p->d->side]->size_line;
 		p->i[0]->image_data[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] 
 			= p->i[p->d->side]->image_data[p->d->textx * (p->i[p->d->side]->bpp / 8) + p->d->texty * p->i[p->d->side]->size_line];
 		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1]
@@ -65,6 +71,7 @@ int		draw_textures(t_param *p, int y)
 		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2]
 			= p->i[p->d->side]->image_data[(p->d->textx * (p->i[p->d->side]->bpp / 8) + p->d->texty * p->i[p->d->side]->size_line) + 2];
 		y++;
+		i++;
 	}
-	return (y);
+	return (i);
 }
