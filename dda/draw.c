@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:30:43 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 17:34:26 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 13:36:55 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,12 +73,14 @@ void	draw(t_param *p)
 	y = 0;
 	set_lineheight(p);
 	y += draw_ceiling(p, y);
-	while (y < p->d->drawend)
-	{
-		p->i[0]->image_data
-			[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = 0xAAAAAA;
-		y++;
-	}
-	// y += draw_textures(p, y);
+	// while (y < p->d->drawend)
+	// {
+	// 	p->i[0]->image_data
+	// 		[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = 0xAAAAAA;
+	// 	y++;
+	// }
+	// printf("Data image : %s\n", p->i[0]->image_data);
+	// printf("Data textu : %s\n", p->i[p->d->side]->image_data);
+	y += draw_textures(p, y);
 	draw_floor(p, y);
 }

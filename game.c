@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 10:42:16 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 17:25:03 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 09:36:25 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ int		key_management(int key, t_param *p)
 		backward(p);
 	else if (key == 0)
 		left(p);
-	if (key == 2)
+	else if (key == 2)
 		right(p);
-	if (key == 123)
+	else if (key == 123)
 		rotate(p, key);
-	if (key == 124)
+	else if (key == 124)
 		rotate(p, key);
 	return (0);
 }

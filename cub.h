@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/05 17:22:25 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/10 09:50:51 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,10 @@ typedef	struct	s_dda
 	int			lineheight;
 	int			drawstart;
 	int			drawend;
+	double		wallx;
+	int			textx;
+	int			texty;
+	double		step;
 }				t_dda;
 
 typedef struct	s_image
@@ -132,7 +136,7 @@ void			set_sidedist(t_param *p);
 void			draw(t_param *p);
 void			set_lineheight(t_param *p);
 int				draw_ceiling(t_param *p, int y);
-// int				draw_textures(t_param *p, int y);
+int				draw_textures(t_param *p, int y);
 void			which_wall(t_param *p);
 void			draw_floor(t_param *p, int y);
 
