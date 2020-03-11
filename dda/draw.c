@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:30:43 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 09:57:54 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 13:52:50 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,4 +75,5 @@ void	draw(t_param *p)
 	y += draw_ceiling(p, y);
 	y += draw_textures(p, y);
 	draw_floor(p, y);
+	set_sprite(p);
 }

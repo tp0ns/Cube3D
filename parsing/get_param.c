@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 11:32:10 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 13:41:07 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ void	init_param(t_param *p)
 	if (!(p->d = malloc(sizeof(t_dda))))
 		leave("Something went wrong with scene initialization - 2");
 	ft_bzero(p->d, sizeof(t_dda));
+	if (!(p->b = malloc(sizeof(t_barrel))))
+		leave("Something went wrong with scene initialization - 4");
+	ft_bzero(p->b, sizeof(t_barrel));
 	if (!(p->i = malloc(sizeof(t_image *) * 7)))
 		leave("Something went wrong with scene initialization - 3");
 	ft_bzero(p->i, sizeof(t_image *) * 7);

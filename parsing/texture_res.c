@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:45:24 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 10:55:03 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 13:42:00 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,6 @@ void	push_res(char *line, t_param *p)
 		p->s->y = 1440;
 	else if (p->s->y < 1)
 		leave("Resolution is too low");
-	if (!(p->d->buffer = malloc(sizeof(double) * (p->s->x + 1))))
+	if (!(p->b->buffer = malloc(sizeof(double) * (p->s->x + 1))))
 		leave("Memory allocation failed");
 }

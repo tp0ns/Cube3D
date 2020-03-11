@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 11:32:04 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 13:41:36 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	check_map(t_param *p, int x, int y)
 	else if (p->s->map[x][y] == '2')
 	{
 		p->s->map[x][y] = 'Z';
-		p->d->nb_sprite++;
+		p->b->nb_sprite++;
 	}
 	check_map(p, x + 1, y);
 	check_map(p, x, y + 1);

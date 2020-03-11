@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 11:15:20 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 13:56:50 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,27 @@ typedef	struct	s_dda
 	int			textx;
 	int			texty;
 	double		step;
-	double		textpos;
+	double		textpos;	
+}				t_dda;
+
+typedef	struct s_barrel
+{
 	int			nb_sprite;
 	double		*buffer;
-
-}				t_dda;
+	double		spritex;
+	double		spritey;
+	double		invdet;
+	double		transformx;
+	double		transformy;
+	int			spritescreenx;
+	int			spriteheight;
+	int			drawstarty;
+	int			drawendy;
+	int			spritewidth;
+	int			drawstartx;
+	int			drawendx;
+	int			stripe;
+}				t_barrel;
 
 typedef struct	s_image
 {
@@ -100,6 +116,8 @@ typedef	struct s_sprite
 {
 	int			x;
 	int			y;
+	double		s_dist;
+	int			s_order;
 }				t_sprite;
 
 
@@ -107,6 +125,7 @@ typedef	struct	s_param
 {
 	t_scene		*s;
 	t_dda		*d;
+	t_barrel	*b;
 	t_sprite	**z;
 	t_image		**i;
 }				t_param;
@@ -160,5 +179,10 @@ void			backward(t_param *p);
 void			forward(t_param *p);
 
 void			sprite(t_param *p);
+void			push_sprite(t_param *p);
+void			draw_sprite(t_param *p);
+void			set_sprite(t_param *p);
+void			sort_sprite(t_param *p);
+void			dist_sprite(t_param *p);
 
 #endif

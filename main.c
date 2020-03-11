@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 11:08:32 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 13:21:14 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 {
 	int			fd;
 	t_param		p;
-
+	
 	fd = 0;
 	if (ac == 2 && file_name(av[1]))
 	{
@@ -35,7 +35,7 @@ int	main(int ac, char **av)
 		init_param(&p);
 		p.d->mlx_ptr = mlx_init();
 		get_param(fd, &p);
-		// game(&p);
+		game(&p);
 	}
 	// else if (ac == 3 && file_name(av[1])) Pour Screenshot;
 	// else
