@@ -6,11 +6,28 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:00:04 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 13:41:36 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 15:19:11 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
+
+void	set_sprite_b(t_param *p)
+{
+	if (p->b->drawstarty < 0)
+		p->b->drawstarty = 0;
+	p->b->drawendy = p->b->spriteheight / 2 + p->s->y / 2;
+	if (p->b->drawendy >= p->s->y)
+		p->b->drawendy = p->s->y - 1;
+	p->b->spritewidth = abs((int)(p->s->y / (p->b->transformy)));
+	p->b->drawstartx = -p->b->spritewidth / 2 + p->b->spritescreenx;
+	if (p->b->drawstartx < 0)
+		p->b->drawstartx = 0;
+	p->b->drawendx = p->b->spritewidth / 2 + p->b->spritescreenx;
+	if (p->b->drawendx >= p->s->x)
+		p->b->drawendx = p->s->x - 1;
+	p->b->stripe = p->b->drawstartx;
+}
 
 void	push_sprite(t_param *p)
 {

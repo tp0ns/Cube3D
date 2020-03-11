@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 15:30:43 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 13:52:50 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 15:23:17 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ int		draw_ceiling(t_param *p, int y)
 		p->i[0]->image_data
 			[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = r;
 		p->i[0]->image_data
-			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] = g;
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] =
+			g;
 		p->i[0]->image_data
-			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] = b;
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] =
+			b;
 		y++;
 	}
 	return (y);
@@ -59,9 +61,11 @@ void	draw_floor(t_param *p, int y)
 		p->i[0]->image_data
 			[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = r;
 		p->i[0]->image_data
-			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] = g;
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] =
+			g;
 		p->i[0]->image_data
-			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] = b;
+			[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] =
+			b;
 		y++;
 	}
 }
@@ -75,5 +79,4 @@ void	draw(t_param *p)
 	y += draw_ceiling(p, y);
 	y += draw_textures(p, y);
 	draw_floor(p, y);
-	set_sprite(p);
 }

@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 12:11:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 13:42:00 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 14:53:18 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ void	dda(t_param *p)
 		p->b->buffer[p->d->screenx] = p->d->walldist;
 		p->d->screenx++;
 	}
+	set_sprite(p);
 }
