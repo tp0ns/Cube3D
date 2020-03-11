@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 12:11:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 14:53:18 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 16:21:37 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,9 @@ void	set_dda(t_param *p)
 
 void	dda(t_param *p)
 {
+	int	i;
+
+	i = 0;
 	p->d->screenx = 0;
 	while (p->d->screenx < p->s->x)
 	{

@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 15:22:06 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 17:59:42 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ typedef	struct	s_sprite
 	int			x;
 	int			y;
 	double		s_dist;
-	int			s_order;
 }				t_sprite;
 
 typedef	struct	s_param
@@ -183,6 +182,7 @@ void			forward(t_param *p);
 void			sprite(t_param *p);
 void			push_sprite(t_param *p);
 void			draw_sprite(t_param *p);
+int				is_black(t_param *p, int y);
 void			set_sprite(t_param *p);
 void			set_sprite_b(t_param *p);
 void			sort_dist_sprite(t_param *p);

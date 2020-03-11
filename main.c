@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 13:21:14 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 17:29:32 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(int ac, char **av)
 {
 	int			fd;
 	t_param		p;
+	// int	i = 0;
 	
 	fd = 0;
 	if (ac == 2 && file_name(av[1]))
@@ -37,6 +38,11 @@ int	main(int ac, char **av)
 		get_param(fd, &p);
 		game(&p);
 	}
+	// while (i < p.b->nb_sprite)
+	// {
+	// 	printf("Sprite x : %d\n", p.z[i]->x);
+	// 	printf("Sprite y : %d\n", p.z[i++]->y);
+	// }
 	// else if (ac == 3 && file_name(av[1])) Pour Screenshot;
 	// else
 	// 	leave("You must use .cub extension for your scene file");
