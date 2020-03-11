@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/10 15:58:28 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 11:32:10 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,18 @@ void	init_param(t_param *p)
 
 	j = 0;
 	if (!(p->s = malloc(sizeof(t_scene))))
-		leave("Something went wrong with resolution initialization");
+		leave("Something went wrong with scene initialization");
 	ft_bzero(p->s, sizeof(t_scene));
 	if (!(p->d = malloc(sizeof(t_dda))))
-		leave("Something went wrong with resolution initialization - 2");
+		leave("Something went wrong with scene initialization - 2");
 	ft_bzero(p->d, sizeof(t_dda));
 	if (!(p->i = malloc(sizeof(t_image *) * 7)))
-		leave("Something went wrong with resolution initialization - 3");
+		leave("Something went wrong with scene initialization - 3");
 	ft_bzero(p->i, sizeof(t_image *) * 7);
 	while (j <= 5)
 	{
 		if (!(p->i[j] = malloc(sizeof(t_image))))
-			leave("Something went wrong with resolution initialization - 3");
+			leave("Something went wrong with scene initialization - 3");
 		ft_bzero(p->i[j], sizeof(t_image));
 		j++;
 	}

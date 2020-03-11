@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/10 16:10:38 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 11:32:04 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,10 @@ void	check_map(t_param *p, int x, int y)
 	if (p->s->map[x][y] == '0')
 		p->s->map[x][y] = 'O';
 	else if (p->s->map[x][y] == '2')
+	{
 		p->s->map[x][y] = 'Z';
+		p->d->nb_sprite++;
+	}
 	check_map(p, x + 1, y);
 	check_map(p, x, y + 1);
 	check_map(p, x - 1, y);
@@ -111,4 +114,5 @@ void	check_param(t_param *p)
 	match_maps(p);
 	set_player(p, (int)p->s->pos_x, (int)p->s->pos_y);
 	check_map(p, (int)p->s->pos_x, (int)p->s->pos_y);
+	sprite(p);
 }

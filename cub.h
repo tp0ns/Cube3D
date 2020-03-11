@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/10 16:33:39 by tpons            ###   ########.fr       */
+/*   Updated: 2020/03/11 11:15:20 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,9 @@ typedef	struct	s_dda
 	int			texty;
 	double		step;
 	double		textpos;
+	int			nb_sprite;
+	double		*buffer;
+
 }				t_dda;
 
 typedef struct	s_image
@@ -93,10 +96,18 @@ typedef struct	s_image
 	int			size_line;
 }				t_image;
 
+typedef	struct s_sprite
+{
+	int			x;
+	int			y;
+}				t_sprite;
+
+
 typedef	struct	s_param
 {
 	t_scene		*s;
 	t_dda		*d;
+	t_sprite	**z;
 	t_image		**i;
 }				t_param;
 
@@ -147,5 +158,7 @@ void			right(t_param *p);
 void			left(t_param *p);
 void			backward(t_param *p);
 void			forward(t_param *p);
+
+void			sprite(t_param *p);
 
 #endif

@@ -8,8 +8,8 @@ FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framew
 INCLUDE = -I cub.h
 
 SRCS =	main.c leave.c game.c inputs.c\
-		parsing/get_param.c parsing/map.c parsing/texture_res.c parsing/colors.c parsing/check_param.c \
-		dda/dda.c dda/draw.c dda/draw_texture.c
+		parsing/get_param.c parsing/map.c parsing/texture_res.c parsing/colors.c parsing/check_param.c parsing/sprite.c\
+		dda/dda.c dda/draw.c dda/draw_texture.c dda/draw_sprite.c
 
 OBJS = $(SRCS:.c=.o)
 
