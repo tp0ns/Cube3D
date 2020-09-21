@@ -26,7 +26,7 @@
 # include <string.h>
 # include <stdlib.h>
 # include <errno.h>
-# include <mlx.h>
+# include "minilibx-linux/mlx.h"
 # include "Libft/libft.h"
 # include <stdio.h> // A retirer
 
