@@ -14,20 +14,20 @@
 
 int		key_management(int key, t_param *p)
 {
-	if (key == 53)
+	if (key == 65307)
 		close_win();
-	else if (key == 13)
+	else if (key == 119)
 		forward(p);
-	else if (key == 1)
+	else if (key == 115)
 		backward(p);
-	else if (key == 0)
+	else if (key == 97)
 		left(p);
-	else if (key == 2)
+	else if (key == 100)
 		right(p);
-	else if (key == 123)
+	else if (key == 65363 || key == 65361)
 		rotate(p, key);
-	else if (key == 124)
-		rotate(p, key);
+	// else if (key == 97)
+	// 	rotate(p, key);
 	return (0);
 }
 

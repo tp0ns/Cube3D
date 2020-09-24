@@ -57,7 +57,7 @@ void	rotate(t_param *p, int key)
 	double olddirx;
 	double oldplanex;
 
-	if (key == 124)
+	if (key == 65363)
 	{
 		olddirx = p->d->dirx;
 		p->d->dirx = p->d->dirx * cos(-RS) - p->d->diry * sin(-RS);
@@ -66,7 +66,7 @@ void	rotate(t_param *p, int key)
 		p->d->planx = p->d->planx * cos(-RS) - p->d->plany * sin(-RS);
 		p->d->plany = oldplanex * sin(-RS) + p->d->plany * cos(-RS);
 	}
-	if (key == 123)
+	if (key == 65361)
 	{
 		olddirx = p->d->dirx;
 		p->d->dirx = p->d->dirx * cos(RS) - p->d->diry * sin(RS);
