@@ -2,10 +2,12 @@ CC = gcc
 
 NAME = Cub3D
 
+#Linux compilation
+FLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
 # FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
-FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framework AppKit
+# FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framework AppKit
 
-INCLUDE = -I cub.h
+INCLUDE = -I cub.h ./minilibx-linux/libmlx.a Libft/libft.a
 
 SRCS =	main.c leave.c game.c inputs.c\
 		parsing/get_param.c parsing/map.c parsing/texture_res.c parsing/colors.c parsing/check_param.c parsing/sprite.c\
@@ -15,7 +17,7 @@ OBJS = $(SRCS:.c=.o)
 
 $(NAME) : $(OBJS) 
 		$(MAKE) -C ./Libft/
-		gcc -o $(NAME) Libft/libft.a $(OBJS) $(INCLUDE) $(FLAGS)
+		gcc -o $(NAME) $(OBJS) $(INCLUDE) $(FLAGS) 
 
 all : $(NAME)
 
