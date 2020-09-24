@@ -16,7 +16,7 @@
 #  define FOV 0.66
 # endif
 # ifndef M
-#  define M 0.6
+#  define M 0.1
 # endif
 # ifndef RS
 #  define RS 0.1
