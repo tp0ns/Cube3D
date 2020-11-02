@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:45:24 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 13:42:00 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/02 14:12:09 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	init_text(t_param *p, int flag, char *path)
 
 	if (!(p->i[flag]->image_ptr = mlx_xpm_file_to_image(
 			p->d->mlx_ptr, path, &p->i[flag]->width, &p->i[flag]->height)))
-		leave("Texture path isn't valid");
+		leave(p, "Texture path isn't valid");
 	p->i[flag]->image_data = mlx_get_data_addr(p->i[flag]->image_ptr,
 			&p->i[flag]->bpp, &p->i[flag]->size_line, &endian);
 }
@@ -84,11 +84,11 @@ void	push_res(char *line, t_param *p)
 	if (p->s->x > 2560)
 		p->s->x = 2560;
 	else if (p->s->x < 1)
-		leave("Resolution is too low");
+		leave(p, "Resolution is too low");
 	if (p->s->y > 1440)
 		p->s->y = 1440;
 	else if (p->s->y < 1)
-		leave("Resolution is too low");
+		leave(p, "Resolution is too low");
 	if (!(p->b->buffer = malloc(sizeof(double) * (p->s->x + 1))))
-		leave("Memory allocation failed");
+		leave(p, "Memory allocation failed");
 }

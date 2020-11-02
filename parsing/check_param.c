@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/25 10:31:01 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 13:41:36 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/02 14:11:36 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,13 @@ void	init_map(t_param *p)
 	x = 0;
 	map_size(p);
 	if (!(p->s->map = malloc(sizeof(char *) * (p->s->max_x + 2))))
-		leave("Something went wrong during map initialization");
+		leave(p, "Something went wrong during map initialization");
 	p->s->map[p->s->max_x + 1] = 0;
 	while (x <= p->s->max_x)
 	{
 		y = 0;
 		if (!(p->s->map[x] = malloc(sizeof(char) * (p->s->max_y + 2))))
-			leave("Something went wrong during map initialization");
+			leave(p, "Something went wrong during map initialization");
 		while (y < p->s->max_y)
 		{
 			p->s->map[x][y] = '-';
@@ -81,7 +81,7 @@ void	match_maps(t_param *p)
 		x++;
 	}
 	if (player != 1)
-		leave("Too much or too few players in scene file");
+		leave(p, "Too much or too few players in scene file");
 }
 
 void	check_map(t_param *p, int x, int y)
@@ -91,7 +91,7 @@ void	check_map(t_param *p, int x, int y)
 		return ;
 	if (x == 0 || y == 0 || p->s->map[x][y] == '-'
 	|| p->s->map[x][y] == '\0' || p->s->map[x][y] == ' ')
-		leave("Map isn't closed around player's spawn");
+		leave(p, "Map isn't closed around player's spawn");
 	if (p->s->map[x][y] == '0')
 		p->s->map[x][y] = 'O';
 	else if (p->s->map[x][y] == '2')
@@ -109,7 +109,7 @@ void	check_param(t_param *p)
 {
 	if (!p->s->x || !p->s->y || !p->s->north || !p->s->south || !p->s->west
 	|| !p->s->east || !p->s->sprite)
-		leave("Not enough informations in scene file");
+		leave(p, "Not enough informations in scene file");
 	init_map(p);
 	match_maps(p);
 	set_player(p, (int)p->s->pos_x, (int)p->s->pos_y);

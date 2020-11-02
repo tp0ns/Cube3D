@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:56:53 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 11:01:54 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/02 14:11:35 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		line_length(char *line)
 	return (length);
 }
 
-char	*clean_map_line(char *line)
+char	*clean_map_line(t_param *p, char *line)
 {
 	char	*clean_line;
 	int		length;
@@ -47,11 +47,11 @@ char	*clean_map_line(char *line)
 	j = 0;
 	length = line_length(line) + 1;
 	if (!(clean_line = malloc(sizeof(char) * length)))
-		leave("Something went wrong with Map allocation.");
+		leave(p, "Something went wrong with Map allocation.");
 	while (line[i])
 	{
 		if (line[i] != ' ' && !is_map_char(line[i]))
-			leave("Unknown character in scene file");
+			leave(p, "Unknown character in scene file");
 		if (is_map_char(line[i]))
 			clean_line[j++] = line[i];
 		i++;
@@ -74,16 +74,16 @@ void	push_map(int fd, t_param *p)
 	{
 		i = 0;
 		if ((rtn = get_next_line(fd, &line)) == -1)
-			leave("Scene file can't be read");
+			leave(p, "Scene file can't be read");
 		if ((line[0] == '1' || line[0] == '0' || line[0] == '2' || line[0] == ' ') && mod != 1)
 		{
-			line = clean_map_line(line);
+			line = clean_map_line(p, line);
 			p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
 		}
 		else if (mod == 1 && line[i] != '\0')
-			leave("Your scene file is uncorrect");
+			leave(p, "Your scene file is uncorrect");
 		else
-			// leave("Your scene file is uncorrect");
+			// leave(p, "Your scene file is uncorrect");
 			mod = 1;
 	}
 	p->s->brut_map = ft_split(p->s->linear_map, '-');

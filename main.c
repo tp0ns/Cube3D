@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 17:29:32 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/02 14:37:00 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,21 @@ int	file_name(char *str)
 
 int	main(int ac, char **av)
 {
-	int			fd;
 	t_param		p;
 	// int	i = 0;
-	
-	fd = 0;
+	init_param(&p);
+	p.s->fd = 0;
 	if (ac == 2 && file_name(av[1]))
 	{
-		fd = open(av[1], O_RDONLY);
-		init_param(&p);
+		p.s->fd = open(av[1], O_RDONLY);
 		p.d->mlx_ptr = mlx_init();
-		get_param(fd, &p);
+		get_param(p.s->fd, &p);
 		game(&p);
 	}
-	// while (i < p.b->nb_sprite)
-	// {
-	// 	printf("Sprite x : %d\n", p.z[i]->x);
-	// 	printf("Sprite y : %d\n", p.z[i++]->y);
-	// }
-	// else if (ac == 3 && file_name(av[1])) Pour Screenshot;
-	// else
-	// 	leave("You must use .cub extension for your scene file");
-	close(fd);
+	else
+		leave(&p, "You must use .cub extension for your scene file");
 	return (0);
 }
-//ADD I FOR PRINT
 	// while (p.s->brut_map[i])
 	// 	printf("%s\n", p.s->brut_map[i++]);
 	// printf("\nxxxxxxxxxxxxxxxxxx\n\n");

@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:00:04 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 15:19:11 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/02 14:12:06 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void	sprite(t_param *p)
 
 	x = 0;
 	if (!(p->z = malloc(sizeof(t_sprite *) * (p->b->nb_sprite + 1))))
-		leave("Something went wrong with sprite initialization");
+		leave(p, "Something went wrong with sprite initialization");
 	ft_bzero(p->z, sizeof(t_sprite *) * (p->b->nb_sprite + 1));
 	while (x <= p->b->nb_sprite)
 	{
 		if (!(p->z[x] = malloc(sizeof(t_sprite))))
-			leave("Something went wrong with sprite initialization - 2");
+			leave(p, "Something went wrong with sprite initialization - 2");
 		ft_bzero(p->z[x++], sizeof(t_sprite));
 	}
 	push_sprite(p);

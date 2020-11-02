@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 13:41:07 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/02 14:11:37 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,21 @@ void	init_param(t_param *p)
 
 	j = 0;
 	if (!(p->s = malloc(sizeof(t_scene))))
-		leave("Something went wrong with scene initialization");
+		leave(p, "Something went wrong with scene initialization");
 	ft_bzero(p->s, sizeof(t_scene));
 	if (!(p->d = malloc(sizeof(t_dda))))
-		leave("Something went wrong with scene initialization - 2");
+		leave(p, "Something went wrong with scene initialization - 2");
 	ft_bzero(p->d, sizeof(t_dda));
 	if (!(p->b = malloc(sizeof(t_barrel))))
-		leave("Something went wrong with scene initialization - 4");
+		leave(p, "Something went wrong with scene initialization - 4");
 	ft_bzero(p->b, sizeof(t_barrel));
 	if (!(p->i = malloc(sizeof(t_image *) * 7)))
-		leave("Something went wrong with scene initialization - 3");
+		leave(p, "Something went wrong with scene initialization - 3");
 	ft_bzero(p->i, sizeof(t_image *) * 7);
 	while (j <= 5)
 	{
 		if (!(p->i[j] = malloc(sizeof(t_image))))
-			leave("Something went wrong with scene initialization - 3");
+			leave(p, "Something went wrong with scene initialization - 3");
 		ft_bzero(p->i[j], sizeof(t_image));
 		j++;
 	}
@@ -59,7 +59,7 @@ void	sort_param(char *line, t_param *p)
 	else if (line[0] == 'C')
 		push_c_col((line + 1), p);
 	else
-		leave("Unrecognized element in scene file");
+		leave(p, "Unrecognized element in scene file");
 }
 
 void	get_param(int fd, t_param *p)
@@ -73,7 +73,7 @@ void	get_param(int fd, t_param *p)
 	{
 		i = 0;
 		if ((rtn = get_next_line(fd, &line)) == -1)
-			leave("Scene file can't be read");
+			leave(p, "Scene file can't be read or doesn't exist");
 		while (line[i] == ' ')
 			i++;
 		if (line[i] == '1' || line[i] == '0' || line[i] == '2')
@@ -82,7 +82,7 @@ void	get_param(int fd, t_param *p)
 	}
 	if (line[i] == '1' || line[i] == '0' || line[i] == '2')
 	{
-		line = clean_map_line(line);
+		line = clean_map_line(p, line);
 		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
 		push_map(fd, p);
 	}

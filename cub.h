@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 17:59:42 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/02 14:35:40 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 
 typedef	struct	s_scene
 {
+	int			fd;
 	char		*linear_map;
 	char		**brut_map;
 	char		**map;
@@ -131,15 +132,15 @@ typedef	struct	s_param
 	t_image		**i;
 }				t_param;
 
-int				close_win(void);
-void			leave(char *str);
+int				close_win(t_param *p);
+void			leave(t_param *p, char *str);
 
 void			get_param(int fd, t_param *p);
 void			init_param(t_param	*p);
 void			sort_param(char *line, t_param *p);
 char			*skip_spaces(char *str);
 void			push_map(int fd, t_param *p);
-char			*clean_map_line(char *line);
+char			*clean_map_line(t_param *p, char *line);
 int				line_length(char *line);
 int				is_map_char(char c);
 char			*cut_spaces(char *str);
@@ -149,7 +150,7 @@ void			push_text(char *line, t_param *p, int flag);
 void			push_res(char *line, t_param *p);
 void			push_c_col(char *line, t_param *p);
 void			push_f_col(char *line, t_param *p);
-void			color_check(int r, int g, int b);
+void			color_check(t_param *p, int r, int g, int b);
 void			check_param(t_param *p);
 void			init_map(t_param *p);
 void			map_size(t_param *p);
