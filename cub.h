@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/02 14:35:40 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/03 14:08:30 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 typedef	struct	s_scene
 {
 	int			fd;
+	int			screenshot;
 	char		*linear_map;
 	char		**brut_map;
 	char		**map;
@@ -157,6 +158,7 @@ void			map_size(t_param *p);
 void			match_maps(t_param *p);
 void			check_map(t_param *p, int x, int y);
 
+int				play(t_param *p);
 void			game(t_param *p);
 
 int				key_management(int key, t_param *p);
@@ -187,5 +189,7 @@ int				is_black(t_param *p, int y);
 void			set_sprite(t_param *p);
 void			set_sprite_b(t_param *p);
 void			sort_dist_sprite(t_param *p);
+
+void			screenshot(t_param *p, char *str);
 
 #endif

@@ -9,7 +9,7 @@ FLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
 
 INCLUDE = -I cub.h ./minilibx-linux/libmlx.a Libft/libft.a
 
-SRCS =	main.c leave.c game.c inputs.c\
+SRCS =	main.c leave.c game.c inputs.c screenshot.c\
 		parsing/get_param.c parsing/map.c parsing/texture_res.c parsing/colors.c parsing/check_param.c parsing/sprite.c\
 		dda/dda.c dda/draw.c dda/draw_texture.c dda/draw_sprite.c
 

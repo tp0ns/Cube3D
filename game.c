@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 10:42:16 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/02 14:11:33 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/03 14:06:39 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,11 @@ int		play(t_param *p)
 	p->i[0]->image_data = mlx_get_data_addr(p->i[0]->image_ptr, &p->i[0]->bpp,
 		&p->i[0]->size_line, &endian);
 	dda(p);
-	mlx_put_image_to_window(p->d->mlx_ptr, p->d->win_ptr,
+	if (!p->s->screenshot)
+	{
+		mlx_put_image_to_window(p->d->mlx_ptr, p->d->win_ptr,
 		p->i[0]->image_ptr, 0, 0);
+	}
 	return (0);
 }
 
