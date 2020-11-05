@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 10:42:16 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/03 14:06:39 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/05 10:03:00 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int		play(t_param *p)
 	{
 		mlx_put_image_to_window(p->d->mlx_ptr, p->d->win_ptr,
 		p->i[0]->image_ptr, 0, 0);
+		mlx_destroy_image(p->d->mlx_ptr, p->i[0]->image_ptr);
 	}
 	return (0);
 }
