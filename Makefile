@@ -4,6 +4,8 @@ NAME = Cub3D
 
 #Linux compilation
 FLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
+# FLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext -fsanitize=address
+
 # FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 # FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framework AppKit
 
