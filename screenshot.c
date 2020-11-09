@@ -6,11 +6,42 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 14:11:26 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/05 14:48:21 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/09 14:00:22 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	flip_screenshot(t_param *p)
+{
+	int		image_length;
+	int 	line_length;
+	int		cursor_image;
+	int		cursor_line;
+	int		fill;
+	char	*new_str;
+
+	image_length = (p->s->x * p->s->y) * 4;
+	line_length = p->s->x * 4;
+	cursor_image = image_length - line_length;
+	fill = 0;
+	if (!(new_str = malloc(sizeof(char) * (image_length + 1))))
+		leave(p, "Oupsie, something bad happend during memory allocation");
+	new_str[image_length] = '\0';
+	while (cursor_image >= 0)
+	{
+		cursor_line = 0;
+		while (cursor_line < line_length)
+		{
+			new_str[fill] = p->i[0]->image_data[cursor_image + cursor_line];
+			cursor_line++;
+			fill++;
+		}
+		cursor_image = cursor_image - line_length;
+	}
+	// free(p->i[0]->image_data);
+	p->i[0]->image_data = new_str;
+}
 
 void	header_screenshot(int fd, t_param *p)
 {
@@ -33,12 +64,6 @@ void	header_screenshot(int fd, t_param *p)
 		write(fd, "\0", 1);
 		i++;
 	}
-	i = (p->s->x * p->s->y) * 4 - 1;
-	while (j <= i)
-	{
-		write(fd, &p->i[0]->image_data[j], 1);
-		j++;
-	}
 }
 
 void	make_screenshot(t_param *p)
@@ -46,7 +71,11 @@ void	make_screenshot(t_param *p)
 	int	ss_fd;
 	int	file_size;
 	int	first_pix;
+	int i;
+	int	j;
 	
+	i = (p->s->x * p->s->y) * 4 - 1;
+	j = 0;
 	if ((ss_fd = open("screenshot.bmp", O_WRONLY | O_CREAT, 00777
 				| O_APPEND | O_TRUNC)) < 0)
 		leave(p, "Couldn't create the screenshot file");
@@ -57,6 +86,12 @@ void	make_screenshot(t_param *p)
 	write(ss_fd, "\0\0\0\0", 4);
 	write(ss_fd, &first_pix, 4);
 	header_screenshot(ss_fd, p);
+	flip_screenshot(p);
+	while (j <= i)
+	{
+		write(ss_fd, &p->i[0]->image_data[j], 1);
+		j++;
+	}
 }
 
 void    screenshot(t_param *p, char *s1)
