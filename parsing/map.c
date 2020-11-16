@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:56:53 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/02 14:11:35 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/16 13:51:02 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	*clean_map_line(t_param *p, char *line)
 	i = 0;
 	j = 0;
 	length = line_length(line) + 1;
-	if (!(clean_line = malloc(sizeof(char) * length)))
+	if (!(clean_line = malloc(sizeof(char) * (length + 1))))
 		leave(p, "Something went wrong with Map allocation.");
 	while (line[i])
 	{
@@ -58,6 +58,7 @@ char	*clean_map_line(t_param *p, char *line)
 	}
 	clean_line[j] = '-';
 	clean_line[length] = '\0';
+	free(line);
 	return (clean_line);
 }
 
@@ -85,6 +86,7 @@ void	push_map(int fd, t_param *p)
 		else
 			// leave(p, "Your scene file is uncorrect");
 			mod = 1;
+		free(line);
 	}
 	p->s->brut_map = ft_split(p->s->linear_map, '-');
 }

@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/03 14:08:30 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/16 14:42:23 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,19 +35,19 @@ typedef	struct	s_scene
 	int			fd;
 	int			screenshot;
 	char		*linear_map;
-	char		**brut_map;
-	char		**map;
+	char		**brut_map;	//Leaks
+	char		**map;		//Leaks
 	double		pos_x;
 	double		pos_y;
 	int			max_x;
 	int			max_y;
 	int			x;
 	int			y;
-	char		*north;
-	char		*south;
-	char		*east;
-	char		*west;
-	char		*sprite;
+	char		*north; 	//Leaks
+	char		*south;		//Leaks
+	char		*east;		//Leaks
+	char		*west;		//Leaks
+	char		*sprite;	//Leaks
 	int			c_col;
 	int			f_col;
 }				t_scene;
@@ -124,13 +124,21 @@ typedef	struct	s_sprite
 	double		s_dist;
 }				t_sprite;
 
+// typedef	struct	s_leaks
+// {
+// 	int			flag_1;
+// 	int			flag_2;
+// 	int			flag_3;
+// 	int			flag_4;
+// }
+
 typedef	struct	s_param
 {
 	t_scene		*s;
 	t_dda		*d;
-	t_barrel	*b;
-	t_sprite	**z;
-	t_image		**i;
+	t_barrel	*b;	
+	t_sprite	**z;	//Leaks
+	t_image		**i;	//Leaks
 }				t_param;
 
 int				close_win(t_param *p);

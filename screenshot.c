@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 14:11:26 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/09 14:00:22 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/13 14:38:54 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,6 @@ void    screenshot(t_param *p, char *s1)
 	play(p);
     make_screenshot(p);
 	write(1, "Screenshot saved !\n", 19);
+	close(p->s->fd);
+	exit(EXIT_SUCCESS);
 }

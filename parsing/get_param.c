@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:35:25 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/02 14:11:37 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/16 14:52:09 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ void	get_param(int fd, t_param *p)
 		if (line[i] == '1' || line[i] == '0' || line[i] == '2')
 			break ;
 		sort_param(&line[i], p);
+		free(line);
 	}
 	if (line[i] == '1' || line[i] == '0' || line[i] == '2')
 	{
 		line = clean_map_line(p, line);
 		p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
+		free(line);
 		push_map(fd, p);
 	}
 	check_param(p);
