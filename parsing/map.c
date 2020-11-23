@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:56:53 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/16 13:51:02 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/23 15:33:13 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,4 +89,5 @@ void	push_map(int fd, t_param *p)
 		free(line);
 	}
 	p->s->brut_map = ft_split(p->s->linear_map, '-');
+	free(p->s->linear_map);
 }

@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/23 14:03:49 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/23 15:28:01 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@
 typedef	struct	s_scene
 {
 	int			fd;
-	int			free_flag;
 	int			screenshot;
 	char		*linear_map;
 	char		**brut_map;	//Leaks
