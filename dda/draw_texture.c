@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:03:03 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/10 15:06:10 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/23 16:18:12 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,24 @@ void	set_texture(t_param *p)
 int		draw_textures(t_param *p, int y)
 {
 	int i;
+	int data_pos;
 
 	i = 0;
 	set_texture(p);
 	p->d->step = 1.0 * p->i[p->d->side]->height / p->d->lineheight;
-	p->d->textpos = (p->d->drawstart - p->s->y / 2 + p->d->lineheight / 2) * p->d->step;
+	p->d->textpos = (p->d->drawstart - p->s->y / 2 + p->d->lineheight / 2)
+					* p->d->step;
 	while (y < p->d->drawend)
 	{
 		p->d->texty = (int)p->d->textpos & (p->i[p->d->side]->height - 1);
 		p->d->textpos += p->d->step;
-		p->i[0]->image_data[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] 
-			= p->i[p->d->side]->image_data[p->d->textx * (p->i[p->d->side]->bpp / 8) + p->d->texty * p->i[p->d->side]->size_line];
-		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1]
-			= p->i[p->d->side]->image_data[(p->d->textx * (p->i[p->d->side]->bpp / 8) + p->d->texty * p->i[p->d->side]->size_line) + 1];
-		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2]
-			= p->i[p->d->side]->image_data[(p->d->textx * (p->i[p->d->side]->bpp / 8) + p->d->texty * p->i[p->d->side]->size_line) + 2];
+		data_pos = p->d->textx * (p->i[p->d->side]->bpp / 8) + p->d->texty * p->i[p->d->side]->size_line;
+		p->i[0]->image_data[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] =
+			p->i[p->d->side]->image_data[data_pos];
+		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] =
+			p->i[p->d->side]->image_data[(data_pos) + 1];
+		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] =
+			p->i[p->d->side]->image_data[(data_pos) + 2];
 		y++;
 		i++;
 	}
