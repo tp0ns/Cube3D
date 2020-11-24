@@ -6,12 +6,12 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/23 15:28:01 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 17:23:21 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUB_H
+# define CUB_H
 # ifndef FOV
 #  define FOV 0.66
 # endif
@@ -28,15 +28,15 @@
 # include <errno.h>
 # include "minilibx-linux/mlx.h"
 # include "Libft/libft.h"
-# include <stdio.h> // A retirer
 
 typedef	struct	s_scene
 {
 	int			fd;
 	int			screenshot;
+	char		*flip_screenshot;
 	char		*linear_map;
-	char		**brut_map;	//Leaks
-	char		**map;		//Leaks
+	char		**brut_map;
+	char		**map;
 	double		pos_x;
 	double		pos_y;
 	int			max_x;
@@ -128,11 +128,12 @@ typedef	struct	s_param
 {
 	t_scene		*s;
 	t_dda		*d;
-	t_barrel	*b;	
-	t_sprite	**z;	//Leaks
-	t_image		**i;	//Leaks
+	t_barrel	*b;
+	t_sprite	**z;
+	t_image		**i;
 }				t_param;
 
+void			free_all(t_param *p);
 int				close_win(t_param *p);
 void			leave(t_param *p, char *str);
 

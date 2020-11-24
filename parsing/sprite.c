@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 11:00:04 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/23 15:24:35 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 16:45:00 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ void	sprite(t_param *p)
 			leave(p, "Something went wrong with sprite initialization - 2");
 		ft_bzero(p->z[x++], sizeof(t_sprite));
 	}
-	// p->s->free_flag = 2;
 	push_sprite(p);
 }

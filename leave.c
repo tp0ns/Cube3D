@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:52:59 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/23 15:54:01 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 17:05:13 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,12 @@ void	free_map(t_param *p)
 	int	j;
 
 	j = 0;
-	while(j <= p->s->max_x)
+	free(p->s->linear_map);
+	while (j <= p->s->max_x)
 		free(p->s->brut_map[j++]);
 	free(p->s->brut_map);
 	j = 0;
-	while(j <= p->s->max_x)
+	while (j <= p->s->max_x)
 		free(p->s->map[j++]);
 	free(p->s->map);
 }
@@ -31,12 +32,11 @@ void	free_images(t_param *p)
 	int	j;
 
 	j = 0;
-	// p->s->free_flag >= 1 && 
-	while(j <= p->b->nb_sprite)
+	while (j <= p->b->nb_sprite)
 		free(p->z[j++]);
 	j = 1;
 	free(p->i[0]);
-	while(j <= 5)
+	while (j <= 5)
 	{
 		mlx_destroy_image(p->d->mlx_ptr, p->i[j]->image_ptr);
 		free(p->i[j]);
@@ -65,7 +65,6 @@ void	free_all(t_param *p)
 
 void	leave(t_param *p, char *str)
 {
-	//free brut_map & map to avoid leaks
 	close(p->s->fd);
 	free_all(p);
 	if (p->d->win_ptr)

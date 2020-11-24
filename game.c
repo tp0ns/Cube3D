@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/03 10:42:16 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/23 14:25:08 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 17:04:04 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ int		key_management(int key, t_param *p)
 		right(p);
 	else if (key == 65363 || key == 65361)
 		rotate(p, key);
-	// else if (key == 97)
-	// 	rotate(p, key);
 	return (0);
 }
 

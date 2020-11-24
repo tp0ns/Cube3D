@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/13 14:54:33 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 17:06:43 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	file_name(char *str)
 int	flag_name(char *str)
 {
 	int len;
-	
+
 	len = ft_strlen(str) - 1;
 	if (str[len] == 'e' && str[len - 1] == 'v' && str[len - 2] == 'a'
 	&& str[len - 3] == 's' && str[len - 4] == '-' && str[len - 5] == '-')
@@ -37,7 +37,7 @@ int	flag_name(char *str)
 int	main(int ac, char **av)
 {
 	t_param		p;
-	
+
 	init_param(&p);
 	p.s->fd = 0;
 	if (ac == 3 && file_name(av[1]) && flag_name(av[2]))
@@ -53,10 +53,3 @@ int	main(int ac, char **av)
 		leave(&p, "Wrong scene file name or flag name");
 	return (0);
 }
-	// while (p.s->brut_map[i])
-	// 	printf("%s\n", p.s->brut_map[i++]);
-	// printf("\nxxxxxxxxxxxxxxxxxx\n\n");
-	// i = 0;
-	// while (p.s->map[i])
-	// 	printf("%s\n", p.s->map[i++]);
-	// printf("\nxxxxxxxxxxxxxxxxxx\n\n");

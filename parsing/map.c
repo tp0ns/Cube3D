@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/30 15:56:53 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/23 15:33:13 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 16:52:43 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,8 @@ void	push_map(int fd, t_param *p)
 		i = 0;
 		if ((rtn = get_next_line(fd, &line)) == -1)
 			leave(p, "Scene file can't be read");
-		if ((line[0] == '1' || line[0] == '0' || line[0] == '2' || line[0] == ' ') && mod != 1)
+		if ((line[0] == '1' || line[0] == '0' || line[0] == '2' ||
+			line[0] == ' ') && mod != 1)
 		{
 			line = clean_map_line(p, line);
 			p->s->linear_map = ft_strjoin_gnl(p->s->linear_map, line);
@@ -84,10 +85,8 @@ void	push_map(int fd, t_param *p)
 		else if (mod == 1 && line[i] != '\0')
 			leave(p, "Your scene file is uncorrect");
 		else
-			// leave(p, "Your scene file is uncorrect");
 			mod = 1;
 		free(line);
 	}
 	p->s->brut_map = ft_split(p->s->linear_map, '-');
-	free(p->s->linear_map);
 }

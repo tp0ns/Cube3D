@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 10:58:13 by tpons             #+#    #+#             */
-/*   Updated: 2020/03/11 18:29:06 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 16:41:21 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,38 @@ void	sort_dist_sprite(t_param *p)
 
 int		is_black(t_param *p, int y)
 {
-	if (p->i[5]->image_data[p->i[5]->size_line * p->b->texy + p->b->texx * p->i[5]->bpp / 8] == 0
-	&& p->i[5]->image_data[(p->i[5]->size_line * p->b->texy + p->b->texx * p->i[5]->bpp / 8) + 1] == 0
-	&& p->i[5]->image_data[(p->i[5]->size_line * p->b->texy + p->b->texx * p->i[5]->bpp / 8) + 2] == 0)
+	if (p->i[5]->image_data[p->i[5]->size_line *
+	p->b->texy + p->b->texx * p->i[5]->bpp / 8] == 0
+	&& p->i[5]->image_data[(p->i[5]->size_line * p->b->texy +
+	p->b->texx * p->i[5]->bpp / 8) + 1] == 0
+	&& p->i[5]->image_data[(p->i[5]->size_line * p->b->texy +
+	p->b->texx * p->i[5]->bpp / 8) + 2] == 0)
 		return (1);
 	return (0);
+}
+
+void	draw_sprite_util(t_param *p, int y)
+{
+	while (y < p->b->drawendy)
+	{
+		p->b->d = y * 256 - p->s->y * 128 + p->b->spriteheight * 128;
+		p->b->texy = ((p->b->d * p->i[5]->height) / p->b->spriteheight) / 256;
+		if (!is_black(p, y))
+		{
+			p->i[0]->image_data[p->b->stripe * p->i[0]->bpp /
+			8 + p->i[0]->size_line * y] = p->i[5]->image_data[
+			p->i[5]->size_line * p->b->texy + p->b->texx * p->i[5]->bpp / 8];
+			p->i[0]->image_data[(p->b->stripe * p->i[0]->bpp /
+			8 + p->i[0]->size_line * y) + 1] = p->i[5]->image_data[
+			(p->i[5]->size_line * p->b->texy +
+			p->b->texx * p->i[5]->bpp / 8) + 1];
+			p->i[0]->image_data[(p->b->stripe * p->i[0]->bpp /
+			8 + p->i[0]->size_line * y) + 2] = p->i[5]->image_data[
+			(p->i[5]->size_line * p->b->texy +
+			p->b->texx * p->i[5]->bpp / 8) + 2];
+		}
+		y++;
+	}
 }
 
 void	draw_sprite(t_param *p)
@@ -55,22 +82,11 @@ void	draw_sprite(t_param *p)
 	{
 		p->b->texx = (int)(256 * (p->b->stripe - (-p->b->spritewidth / 2 +
 		p->b->spritescreenx)) * p->i[5]->width / p->b->spritewidth) / 256;
-		if (p->b->transformy > 0 && p->b->stripe > 0 && p->b->stripe < p->s->x && p->b->transformy < p->b->buffer[p->b->stripe])
+		if (p->b->transformy > 0 && p->b->stripe > 0 && p->b->stripe <
+			p->s->x && p->b->transformy < p->b->buffer[p->b->stripe])
 		{
 			y = p->b->drawstarty;
-			while (y < p->b->drawendy)
-			{
-				p->b->d = y * 256 - p->s->y * 128 + p->b->spriteheight * 128;
-				p->b->texy = ((p->b->d * p->i[5]->height) / p->b->spriteheight)
-				/ 256;
-				if (!is_black(p, y))
-				{
-					p->i[0]->image_data[p->b->stripe * p->i[0]->bpp / 8 + p->i[0]->size_line * y] = p->i[5]->image_data[p->i[5]->size_line * p->b->texy + p->b->texx * p->i[5]->bpp / 8];
-					p->i[0]->image_data[(p->b->stripe * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] = p->i[5]->image_data[(p->i[5]->size_line * p->b->texy + p->b->texx * p->i[5]->bpp / 8) + 1];
-					p->i[0]->image_data[(p->b->stripe * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] = p->i[5]->image_data[(p->i[5]->size_line * p->b->texy + p->b->texx * p->i[5]->bpp / 8) + 2];
-				}
-				y++;
-			}
+			draw_sprite_util(p, y);
 		}
 		p->b->stripe++;
 	}

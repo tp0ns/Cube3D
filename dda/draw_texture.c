@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/05 14:03:03 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/23 16:18:12 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 14:35:10 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,27 @@ void	set_texture(t_param *p)
 	}
 }
 
+int		draw_textures_util(t_param *p, int y)
+{
+	int data_pos;
+	int	text_data_pos;
+
+	p->d->texty = (int)p->d->textpos & (p->i[p->d->side]->height - 1);
+	p->d->textpos += p->d->step;
+	data_pos = p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y;
+	text_data_pos = p->d->textx * (p->i[p->d->side]->bpp / 8) +
+		p->d->texty * p->i[p->d->side]->size_line;
+	p->i[0]->image_data[data_pos] =
+		p->i[p->d->side]->image_data[text_data_pos];
+	p->i[0]->image_data[data_pos + 1] =
+		p->i[p->d->side]->image_data[text_data_pos + 1];
+	p->i[0]->image_data[data_pos + 2] =
+		p->i[p->d->side]->image_data[text_data_pos + 2];
+}
+
 int		draw_textures(t_param *p, int y)
 {
 	int i;
-	int data_pos;
 
 	i = 0;
 	set_texture(p);
@@ -63,15 +80,7 @@ int		draw_textures(t_param *p, int y)
 					* p->d->step;
 	while (y < p->d->drawend)
 	{
-		p->d->texty = (int)p->d->textpos & (p->i[p->d->side]->height - 1);
-		p->d->textpos += p->d->step;
-		data_pos = p->d->textx * (p->i[p->d->side]->bpp / 8) + p->d->texty * p->i[p->d->side]->size_line;
-		p->i[0]->image_data[p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y] =
-			p->i[p->d->side]->image_data[data_pos];
-		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 1] =
-			p->i[p->d->side]->image_data[(data_pos) + 1];
-		p->i[0]->image_data[(p->d->screenx * p->i[0]->bpp / 8 + p->i[0]->size_line * y) + 2] =
-			p->i[p->d->side]->image_data[(data_pos) + 2];
+		draw_textures_util(p, y);
 		y++;
 		i++;
 	}
