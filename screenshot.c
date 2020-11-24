@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 14:11:26 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/13 14:38:54 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/24 18:01:09 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	flip_screenshot(t_param *p)
 {
 	int		image_length;
-	int 	line_length;
+	int		line_length;
 	int		cursor_image;
 	int		cursor_line;
 	int		fill;
@@ -39,7 +39,7 @@ void	flip_screenshot(t_param *p)
 		}
 		cursor_image = cursor_image - line_length;
 	}
-	// free(p->i[0]->image_data);
+	mlx_destroy_image(p->d->mlx_ptr, p->i[0]->image_ptr); ///////ici
 	p->i[0]->image_data = new_str;
 }
 
@@ -73,7 +73,7 @@ void	make_screenshot(t_param *p)
 	int	first_pix;
 	int i;
 	int	j;
-	
+
 	i = (p->s->x * p->s->y) * 4 - 1;
 	j = 0;
 	if ((ss_fd = open("screenshot.bmp", O_WRONLY | O_CREAT, 00777
@@ -94,16 +94,22 @@ void	make_screenshot(t_param *p)
 	}
 }
 
-void    screenshot(t_param *p, char *s1)
+void	screenshot(t_param *p, char *s1)
 {
-    write(1, "Saving screenshot ...\n", 22);
-    p->s->fd = open(s1, O_RDONLY);
-    p->s->screenshot = 1;
+	write(1, "Saving screenshot ...\n", 22);
+	p->s->fd = open(s1, O_RDONLY);
+	p->s->screenshot = 1;
 	p->d->mlx_ptr = mlx_init();
 	get_param(p->s->fd, p);
 	play(p);
-    make_screenshot(p);
+	make_screenshot(p);
 	write(1, "Screenshot saved !\n", 19);
+	free(p->i[0]->image_data);  ///////////ici
 	close(p->s->fd);
+	free_all(p);
+	if (p->d->win_ptr)
+		mlx_destroy_window(p->d->mlx_ptr, p->d->win_ptr);
+	free(p->d->mlx_ptr);
+	free(p->d);
 	exit(EXIT_SUCCESS);
 }
