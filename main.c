@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 13:39:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/24 17:06:43 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/25 15:45:20 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int ac, char **av)
 {
 	t_param		p;
 
+	ft_bzero(&p, sizeof(t_param));
 	init_param(&p);
 	p.s->fd = 0;
 	if (ac == 3 && file_name(av[1]) && flag_name(av[2]))

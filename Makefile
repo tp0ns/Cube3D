@@ -4,10 +4,9 @@ NAME = Cub3D
 
 #Linux compilation
 FLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
-# FLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext -fsanitize=address
 
+#Mac OS compilation
 # FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
-# FLAGS = -Wall -Wextra -Werror -fsanitize=address -lmlx -framework OpenGL -framework AppKit
 
 INCLUDE = -I cub.h ./minilibx-linux/libmlx.a Libft/libft.a
 
@@ -37,7 +36,7 @@ run : all
 		./Cub3D map.cub
 
 # %.o: %.c
-	# $(CC) $(FLAGS) -I cube3d.h -c $<  -o $(<:.c=.o)
+# 	$(CC) $(FLAGS) -I cub.h -c $<  -o $(<:.c=.o)
 
 
 # valgrind --leak-check=full --show-leak-kinds=definite --track-origins=yes --log-file=valgrind-out.txt ./Cub3D map.cub

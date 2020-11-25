@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 14:11:26 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/24 18:01:09 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/25 14:29:05 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 void	flip_screenshot(t_param *p)
 {
-	int		image_length;
 	int		line_length;
 	int		cursor_image;
 	int		cursor_line;
 	int		fill;
 	char	*new_str;
 
-	image_length = (p->s->x * p->s->y) * 4;
 	line_length = p->s->x * 4;
-	cursor_image = image_length - line_length;
+	cursor_image = ((p->s->x * p->s->y) * 4) - line_length;
 	fill = 0;
-	if (!(new_str = malloc(sizeof(char) * (image_length + 1))))
+	if (!(new_str = malloc(sizeof(char) * (((p->s->x * p->s->y) * 4) + 1))))
 		leave(p, "Oupsie, something bad happend during memory allocation");
-	new_str[image_length] = '\0';
+	new_str[(p->s->x * p->s->y) * 4] = '\0';
 	while (cursor_image >= 0)
 	{
 		cursor_line = 0;
@@ -39,7 +37,7 @@ void	flip_screenshot(t_param *p)
 		}
 		cursor_image = cursor_image - line_length;
 	}
-	mlx_destroy_image(p->d->mlx_ptr, p->i[0]->image_ptr); ///////ici
+	mlx_destroy_image(p->d->mlx_ptr, p->i[0]->image_ptr);
 	p->i[0]->image_data = new_str;
 }
 
@@ -104,11 +102,9 @@ void	screenshot(t_param *p, char *s1)
 	play(p);
 	make_screenshot(p);
 	write(1, "Screenshot saved !\n", 19);
-	free(p->i[0]->image_data);  ///////////ici
+	free(p->i[0]->image_data);
 	close(p->s->fd);
 	free_all(p);
-	if (p->d->win_ptr)
-		mlx_destroy_window(p->d->mlx_ptr, p->d->win_ptr);
 	free(p->d->mlx_ptr);
 	free(p->d);
 	exit(EXIT_SUCCESS);
