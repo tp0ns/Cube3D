@@ -2,10 +2,10 @@ CC = gcc
 
 NAME = Cub3D
 
-#Linux compilation
+# Linux compilation
 FLAGS = -Wall -Wextra -Werror -lm -lbsd -lX11 -lXext
 
-#Mac OS compilation
+# Mac OS compilation
 # FLAGS = -Wall -Wextra -Werror -lmlx -framework OpenGL -framework AppKit
 
 INCLUDE = -I cub.h ./minilibx-linux/libmlx.a Libft/libft.a
@@ -31,7 +31,6 @@ fclean : clean
 		$(MAKE) fclean -C ./Libft
 re : fclean all
 
-# a enlever
 run : all
 		./Cub3D map.cub
 
