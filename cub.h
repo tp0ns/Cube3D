@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/21 11:16:10 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/24 17:23:21 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/30 14:59:46 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef	struct	s_scene
 	double		pos_y;
 	int			max_x;
 	int			max_y;
+	int			screen_res_x;
+	int			screen_res_y;
 	int			x;
 	int			y;
 	char		*north;

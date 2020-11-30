@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 13:45:24 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/24 16:47:52 by tpons            ###   ########.fr       */
+/*   Updated: 2020/11/30 15:03:20 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,20 +75,22 @@ void	push_res(char *line, t_param *p)
 	int	i;
 
 	i = 0;
+	mlx_get_screen_size(p->d->mlx_ptr, &p->s->screen_res_x,
+		&p->s->screen_res_y);
 	p->s->x = ft_atoi(&line[i]);
 	while (line[i] == ' ' && line[i])
 		i++;
 	while (line[i] >= '0' && line[i] <= '9' && line[i])
 		i++;
 	p->s->y = ft_atoi(&line[i]);
-	if (p->s->x > 2560)
-		p->s->x = 2560;
+	if (p->s->x > p->s->screen_res_x)
+		p->s->x = p->s->screen_res_x;
 	else if (p->s->x < 1)
-		leave(p, "Resolution is too low");
-	if (p->s->y > 1440)
-		p->s->y = 1440;
+		leave(p, "Resolution is too low or isn't given");
+	if (p->s->y > p->s->screen_res_y)
+		p->s->y = p->s->screen_res_y;
 	else if (p->s->y < 1)
-		leave(p, "Resolution is too low");
+		leave(p, "Resolution is too low or isn't given");
 	if (!(p->b->buffer = malloc(sizeof(double) * (p->s->x + 1))))
 		leave(p, "Memory allocation failed");
 }
