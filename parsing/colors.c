@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/24 14:27:08 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/02 14:10:59 by tpons            ###   ########.fr       */
+/*   Updated: 2020/12/01 16:46:39 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,35 @@ void	color_check(t_param *p, int r, int g, int b)
 		leave(p, "RGB values should be between 0 and 255");
 }
 
+void	check_color_line(t_param *p, char *line)
+{
+	int i;
+	int	num;
+	int	col;
+
+	i = 0;
+	num = 0;
+	col = 0;
+	while (line[i])
+	{
+		if (ft_isdigit(line[i]))
+		{
+			if (!num)
+			{
+				num = 1;
+				col++;
+			}
+		}
+		else if (line[i] == ' ' || line[i] == ',')
+			num = 0;
+		else
+			leave(p, "Color line is invalid");
+		i++;
+	}
+	if (col != 3)
+		leave(p, "Color line is invalid");
+}
+
 void	push_f_col(char *line, t_param *p)
 {
 	int	i;
@@ -25,6 +54,7 @@ void	push_f_col(char *line, t_param *p)
 	int	f_g;
 	int	f_b;
 
+	check_color_line(p, line);
 	i = 0;
 	f_r = ft_atoi(line);
 	while (line[i] != ',')
@@ -47,6 +77,7 @@ void	push_c_col(char *line, t_param *p)
 	int	c_g;
 	int	c_b;
 
+	check_color_line(p, line);
 	i = 0;
 	c_r = ft_atoi(line);
 	while (line[i] != ',')
