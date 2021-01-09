@@ -6,7 +6,7 @@
 /*   By: tpons <tpons@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 14:11:26 by tpons             #+#    #+#             */
-/*   Updated: 2020/11/25 14:29:05 by tpons            ###   ########.fr       */
+/*   Updated: 2021/01/09 14:01:33 by tpons            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	header_screenshot(int fd, t_param *p)
 	write(fd, &p->s->y, 4);
 	write(fd, &plane_number, 2);
 	write(fd, &p->i[0]->bpp, 2);
-	while (i < 32)
+	while (i < 28)
 	{
 		write(fd, "\0", 1);
 		i++;
